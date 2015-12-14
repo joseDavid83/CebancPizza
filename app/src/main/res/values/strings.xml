@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Cebanc-Pizza</string>
     <string name="datos">Datos del cliente</string>
+    <string-array name="tipo_pizza">
+        <item>Masa fina</item>
+        <item>Masa normal</item>
+    </string-array>
+
+    <string-array name="tamaño_pizza">
+        <item>Individual</item>
+        <item>Mediana</item>
+        <item>Familiar</item>
+    </string-array>
 </resources>
