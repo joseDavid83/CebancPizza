@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText1" />
+        android:id="@+id/txtNombre" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
-        android:id="@+id/editText2" />
+        android:id="@+id/txtApellido" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,18 +52,18 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText3" />
+        android:id="@+id/txtTelefono" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Siguiente"
         android:id="@+id/btnSiguiente" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Salir"
         android:id="@+id/btnSalir" />
 
 </LinearLayout>
