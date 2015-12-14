@@ -11,6 +11,7 @@ public class DatosCliente extends AppCompatActivity{
     private Button c;
     private Button e;
     private Button f;
+    private Button h;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
