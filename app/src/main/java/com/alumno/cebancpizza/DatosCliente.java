@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class DatosCliente extends AppCompatActivity{
+    private Button b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
