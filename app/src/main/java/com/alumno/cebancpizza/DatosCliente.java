@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class DatosCliente extends AppCompatActivity{
     private Button sig;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,9 @@ public class DatosCliente extends AppCompatActivity{
     public void lanzarDatosPedido(){
         Intent i=new Intent(this, DatosPedido.class);
         startActivity(i);
+    }
+    public void crearCliente(){
+
     }
 
 }
