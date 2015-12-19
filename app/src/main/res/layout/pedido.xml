@@ -3,275 +3,578 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TabHost
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tabHost">
+        android:id="@+id/scrollView" >
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <TabHost
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></TabWidget>
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:id="@+id/tabHost">
 
                 <LinearLayout
-                    android:id="@+id/tab1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <TabWidget
+                        android:id="@android:id/tabs"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:layout_height="wrap_content"></TabWidget>
 
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="50dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:text="Tipo de pizza"
-                                android:id="@+id/txtTipo" />
-
-                            <Spinner
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/cmbTipo" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:text="Tamaño"
-                                android:id="@+id/txtTamaño" />
-
-                            <Spinner
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/cmbTamaño" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <TableLayout
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TableRow
+                        <LinearLayout
+                            android:id="@+id/tab1"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center">
 
-                                <TextView
+                                <LinearLayout
+                                    android:orientation="vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="Carbonara"
-                                    android:id="@+id/textView2" />
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginRight="50dp">
 
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="80dp"
-                                    android:id="@+id/imgCarbonara"
-                                    android:src="@mipmap/carbonara" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="Tipo de masa"
+                                        android:id="@+id/txtTipo" />
 
-                                <EditText
-                                    android:layout_width="45dp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="number"
-                                    android:ems="10"
-                                    android:id="@+id/editText"
-                                    android:hint="Cant" />
+                                    <Spinner
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/cmbTipo" />
+                                </LinearLayout>
 
-                                <Button
+                                <LinearLayout
+                                    android:orientation="vertical"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Añadir"
-                                    android:id="@+id/btnCarbonara" />
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="Tamaño"
+                                        android:id="@+id/txtTamaño" />
+
+                                    <Spinner
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/cmbTamaño" />
+                                </LinearLayout>
 
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:orientation="vertical"
+                            <TableLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="Barbacoa"
-                                    android:id="@+id/textView3" />
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
 
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="80dp"
-                                    android:id="@+id/imgBarbacoa"
-                                    android:src="@mipmap/barbacoa" />
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
 
-                                <EditText
-                                    android:layout_width="45dp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="number"
-                                    android:ems="10"
-                                    android:id="@+id/editText2"
-                                    android:hint="Cant" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Carbonara"
+                                            android:id="@+id/textView2" />
 
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Añadir"
-                                    android:id="@+id/btnBarbacoa" />
-                            </LinearLayout>
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgCarbonara"
+                                            android:src="@mipmap/carbonara" />
 
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="4 quesos"
-                                    android:id="@+id/textView4" />
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView10" />
 
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="80dp"
-                                    android:id="@+id/imgQuesos"
-                                    android:src="@mipmap/quesos" />
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/txtCantCarbo"
+                                                android:text="1" />
 
-                                <EditText
-                                    android:layout_width="45dp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="number"
-                                    android:ems="10"
-                                    android:id="@+id/editText5"
-                                    android:hint="Cant" />
+                                        </LinearLayout>
 
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Añadir"
-                                    android:id="@+id/button3" />
-                            </LinearLayout>
-                        </TableRow>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:id="@+id/lblPrecioCarbonara" />
 
-                        <TableRow
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/btnCarbonara" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Barbacoa"
+                                            android:id="@+id/textView3" />
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgBarbacoa"
+                                            android:src="@mipmap/barbacoa" />
+
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView11" />
+
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/txtCantBar"
+                                                android:text="1" />
+
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:id="@+id/lblPrecioBarbacoa" />
+
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/btnBarbacoa" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="4 quesos"
+                                            android:id="@+id/textView4" />
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgQuesos"
+                                            android:src="@mipmap/quesos" />
+
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView12" />
+
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/txtCantQuesos"
+                                                android:text="1" />
+
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:id="@+id/lblPrecioQuesos" />
+
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/button3" />
+
+                                    </LinearLayout>
+                                </TableRow>
+
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Vegetal"
+                                            android:id="@+id/textView5" />
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgVegetal"
+                                            android:src="@mipmap/vegetal" />
+
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView13" />
+
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/txtCantVegetal"
+                                                android:text="1" />
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:id="@+id/lblPrecioVegetal" />
+
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/button" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Tropical"
+                                            android:id="@+id/textView6" />
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgTropical"
+                                            android:src="@mipmap/tropical" />
+
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView14" />
+
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/txtCantTropical"
+                                                android:text="1" />
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:id="@+id/lblPrecioTropical" />
+
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/button2" />
+
+                                    </LinearLayout>
+                                </TableRow>
+
+                            </TableLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab2"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                            <LinearLayout
-                                android:orientation="vertical"
+                            <TableLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="Medium Text"
-                                    android:id="@+id/textView5" />
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
 
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="80dp"
-                                    android:id="@+id/imgVegetal"
-                                    android:src="@mipmap/vegetal" />
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
 
-                                <EditText
-                                    android:layout_width="45dp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="number"
-                                    android:ems="10"
-                                    android:id="@+id/editText3"
-                                    android:hint="Cant" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Coca-cola"
+                                            android:id="@+id/textView7" />
 
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Añadir"
-                                    android:id="@+id/button" />
-                            </LinearLayout>
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgCocacola"
+                                            android:src="@mipmap/cocacola" />
 
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="Medium Text"
-                                    android:id="@+id/textView6" />
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView15" />
 
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="80dp"
-                                    android:id="@+id/imgTropical"
-                                    android:src="@mipmap/tropical" />
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/editText6" />
+                                        </LinearLayout>
 
-                                <EditText
-                                    android:layout_width="45dp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="number"
-                                    android:ems="10"
-                                    android:id="@+id/editText4"
-                                    android:hint="Cant" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:id="@+id/lblPrecioCarbo" />
 
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Añadir"
-                                    android:id="@+id/button2" />
-                            </LinearLayout>
-                        </TableRow>
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/button4" />
 
-                    </TableLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Limon"
+                                            android:id="@+id/textView8" />
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgLimon"
+                                            android:src="@mipmap/limon" />
+
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView16" />
+
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/editText7" />
+                                        </LinearLayout>
+
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/button5" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Naranja"
+                                            android:id="@+id/textView9" />
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgNaranja" />
+
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                                android:text="Cant:"
+                                                android:id="@+id/textView17" />
+
+                                            <EditText
+                                                android:layout_width="45dp"
+                                                android:layout_height="wrap_content"
+                                                android:inputType="number"
+                                                android:ems="10"
+                                                android:id="@+id/editText8" />
+                                        </LinearLayout>
+
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Añadir"
+                                            android:id="@+id/button6" />
+
+                                    </LinearLayout>
+                                </TableRow>
+
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Nestea"
+                                            android:id="@+id/textView18" />
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:layout_height="80dp"
+                                            android:id="@+id/imgNestea" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"></LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"></LinearLayout>
+                                </TableRow>
+                            </TableLayout>
+                        </LinearLayout>
+
+
+                    </FrameLayout>
                 </LinearLayout>
+            </TabHost>
 
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Siguiente"
+                android:id="@+id/btnSiuiente2" />
 
-
-            </FrameLayout>
         </LinearLayout>
-    </TabHost>
+    </ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Siguiente"
-        android:id="@+id/btnSiuiente2" />
 </LinearLayout>
