@@ -39,6 +39,7 @@ public class Resumen extends AppCompatActivity {
             precio=arrayPizzasResumen.get(4+i);
             textoanterior=pizzas.getText().toString();
             pizzas.setText(textoanterior+" "+cantidad+" "+nombrepizza+" "+tamaño+" "+masa+" "+precio);
+            //hola
         }
     }
 }
