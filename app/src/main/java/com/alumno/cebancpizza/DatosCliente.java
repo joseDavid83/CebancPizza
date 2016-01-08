@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class DatosCliente extends AppCompatActivity{
-    private Button sig;
+    private Button sig,sal;
     private EditText nombre,direccion,telefono;
     private String nomb,direc,tel;
     private boolean comprobar;
@@ -20,6 +20,7 @@ public class DatosCliente extends AppCompatActivity{
         setContentView(R.layout.datos_cliente);
 
         sig=(Button)findViewById(R.id.btnSiguiente);
+        sal=(Button)findViewById(R.id.btnSalir);
         nombre=(EditText)findViewById(R.id.txtNombre);
         direccion=(EditText)findViewById(R.id.txtDireccion);
         telefono=(EditText)findViewById(R.id.txtTelefono);
@@ -31,6 +32,13 @@ public class DatosCliente extends AppCompatActivity{
             public void onClick(View v) {
                 comprobar=datos();
                 lanzarDatosPedido(comprobar);
+            }
+        });
+
+        sal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

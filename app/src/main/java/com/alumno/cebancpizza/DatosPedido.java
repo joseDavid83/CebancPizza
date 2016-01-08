@@ -35,7 +35,7 @@ public class DatosPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pedido);
 
-        sig=(Button)findViewById(R.id.btnSiuiente2);
+        sig=(Button)findViewById(R.id.btnSiguiente2);
         preciocarbo=(TextView)findViewById(R.id.lblPrecioCarbonara);
         preciobar=(TextView)findViewById(R.id.lblPrecioBarbacoa);
         precioque=(TextView)findViewById(R.id.lblPrecioQuesos);
