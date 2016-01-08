@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by adminportatil on 10/12/2015.
@@ -27,6 +30,11 @@ public class DatosPedido extends AppCompatActivity {
     private double[][] preciospizza = new double[tampizza][tipopizza];
     private double[] preciosbebida= {1.99,1.05,1.5,1.35,1,1.25};
     private int posispinner=0;
+    private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical;
+
+    private TextView textoCarbonara,textoBarbacoa,texto4Quesos,textoVegetal,textoTropical;
+    ArrayList<String> arrayPizzas = new ArrayList<String> ();
+    private String tamañoPizza,tipoMasa;
 
     //variables para recoger los datos del cliente
     String n,d,t;
@@ -60,6 +68,17 @@ public class DatosPedido extends AppCompatActivity {
         cantCer=(EditText)findViewById(R.id.txtCantCerveza);
         cantAgua=(EditText)findViewById(R.id.txtCantAgua);
 
+        botonCarbonara=(Button)findViewById(R.id.btnCarbonara);
+        botonBarbacoa=(Button)findViewById(R.id.btnBarbacoa);
+        boton4Quesos=(Button)findViewById(R.id.btn4Quesos);
+        botonVegetal=(Button)findViewById(R.id.btnVegetal);
+        botonTropical=(Button)findViewById(R.id.btnTropical);
+
+        textoCarbonara=(TextView)findViewById(R.id.txtCarbonara);
+        textoBarbacoa=(TextView)findViewById(R.id.txtBarbacoa);
+        texto4Quesos=(TextView)findViewById(R.id.txt4Quesos);
+        textoVegetal=(TextView)findViewById(R.id.txtVegetal);
+        textoTropical=(TextView)findViewById(R.id.txtTropical);
 
         //recogemos los datos del cliente de la actividad anterior
         n=getIntent().getStringExtra("nombre");
@@ -111,7 +130,12 @@ public class DatosPedido extends AppCompatActivity {
                 //lblMensaje.setText("Seleccionado:" +parent.getItemAtPosition(position));
                 //Podemos recuperar el ítem seleccionado usando
                 //parent.getItemAtPosition(position)
+                if (position == 0) {
+                    tipoMasa = "Masa fina";
 
+                } else if (position == 1) {
+                    tipoMasa = "Masa normal";
+                }
             }
 
             @Override
@@ -136,18 +160,21 @@ public class DatosPedido extends AppCompatActivity {
                     precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]+" €");
                     preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]+" €");
                     preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]+" €");
+                    tamañoPizza="Individual";
                 }else if(position==1) {
                     preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]+" €");
                     preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]+" €");
                     precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]+" €");
                     preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]+" €");
                     preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]+" €");
+                    tamañoPizza="Mediana";
                 }else{
                     preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]+" €");
                     preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]+" €");
                     precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]+" €");
                     preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]+" €");
                     preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
+                    tamañoPizza="Familiar";
                 }
             }
 
@@ -157,6 +184,34 @@ public class DatosPedido extends AppCompatActivity {
             }
         });
         Log.e("info", "entra");
+
+        botonCarbonara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayPizzas.add(cantCar.getText().toString());
+                arrayPizzas.add(textoCarbonara.getText().toString());
+                arrayPizzas.add(tamañoPizza.toString());
+                arrayPizzas.add(tipoMasa.toString());
+                arrayPizzas.add(preciocarbo.getText().toString());
+
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonBarbacoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayPizzas.add(cantBar.getText().toString());
+                arrayPizzas.add(textoBarbacoa.getText().toString());
+                arrayPizzas.add(tamañoPizza.toString());
+                arrayPizzas.add(tipoMasa.toString());
+                arrayPizzas.add(preciobar.getText().toString());
+
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
 
         //Ahora cuando cambia la cantidad
 
@@ -340,6 +395,7 @@ public class DatosPedido extends AppCompatActivity {
         i.putExtra("nombre", n);
         i.putExtra("direccion", d);
         i.putExtra("telefono", t);
+        i.putExtra("ap",arrayPizzas);
         startActivity(i);
     }
 

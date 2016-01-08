@@ -103,7 +103,7 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Carbonara"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtCarbonara"
                                             android:textSize="15dp" />
 
                                         <ImageView
@@ -162,7 +162,7 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Barbacoa"
-                                            android:id="@+id/textView3"
+                                            android:id="@+id/txtBarbacoa"
                                             android:textSize="15dp" />
 
                                         <ImageView
@@ -220,7 +220,7 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="4 quesos"
-                                            android:id="@+id/textView4"
+                                            android:id="@+id/txt4Quesos"
                                             android:textSize="15dp" />
 
                                         <ImageView
@@ -263,7 +263,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnQuesos"
+                                            android:id="@+id/btn4Quesos"
                                             android:textSize="15dp" />
 
                                     </LinearLayout>
@@ -283,7 +283,7 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Vegetal"
-                                            android:id="@+id/textView5"
+                                            android:id="@+id/txtVegetal"
                                             android:textSize="15dp" />
 
                                         <ImageView
@@ -340,7 +340,7 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Tropical"
-                                            android:id="@+id/textView6"
+                                            android:id="@+id/txtTropical"
                                             android:textSize="15dp" />
 
                                         <ImageView
