@@ -35,7 +35,7 @@
 
                         <LinearLayout
                             android:id="@+id/tab1"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
@@ -87,7 +87,7 @@
 
                             <TableLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="wrap_content">
 
                                 <TableRow
                                     android:layout_width="match_parent"
@@ -103,10 +103,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Carbonara"
-                                            android:id="@+id/textView2" />
+                                            android:id="@+id/textView2"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgCarbonara"
                                             android:src="@mipmap/carbonara" />
@@ -121,15 +122,17 @@
                                                 android:layout_height="wrap_content"
                                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                                 android:text="@string/cantidad"
-                                                android:id="@+id/textView10" />
+                                                android:id="@+id/textView10"
+                                                android:textSize="15dp" />
 
                                             <EditText
-                                                android:layout_width="45dp"
+                                                android:layout_width="35dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
                                                 android:id="@+id/txtCantCarbo"
-                                                android:text="1" />
+                                                android:text="1"
+                                                android:textSize="15dp" />
 
                                         </LinearLayout>
 
@@ -137,13 +140,15 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioCarbonara" />
+                                            android:id="@+id/lblPrecioCarbonara"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnCarbonara" />
+                                            android:id="@+id/btnCarbonara"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
 
@@ -157,10 +162,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Barbacoa"
-                                            android:id="@+id/textView3" />
+                                            android:id="@+id/textView3"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgBarbacoa"
                                             android:src="@mipmap/barbacoa" />
@@ -178,12 +184,13 @@
                                                 android:id="@+id/textView11" />
 
                                             <EditText
-                                                android:layout_width="45dp"
+                                                android:layout_width="35dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
                                                 android:id="@+id/txtCantBar"
-                                                android:text="1" />
+                                                android:text="1"
+                                                android:textSize="15dp" />
 
                                         </LinearLayout>
 
@@ -191,13 +198,15 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioBarbacoa" />
+                                            android:id="@+id/lblPrecioBarbacoa"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnBarbacoa" />
+                                            android:id="@+id/btnBarbacoa"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
 
@@ -211,10 +220,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="4 quesos"
-                                            android:id="@+id/textView4" />
+                                            android:id="@+id/textView4"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgQuesos"
                                             android:src="@mipmap/quesos" />
@@ -232,12 +242,13 @@
                                                 android:id="@+id/textView12" />
 
                                             <EditText
-                                                android:layout_width="45dp"
+                                                android:layout_width="35dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
                                                 android:id="@+id/txtCantQuesos"
-                                                android:text="1" />
+                                                android:text="1"
+                                                android:textSize="15dp" />
 
                                         </LinearLayout>
 
@@ -245,13 +256,15 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioQuesos" />
+                                            android:id="@+id/lblPrecioQuesos"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/button3" />
+                                            android:id="@+id/btnQuesos"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
                                 </TableRow>
@@ -270,10 +283,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Vegetal"
-                                            android:id="@+id/textView5" />
+                                            android:id="@+id/textView5"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgVegetal"
                                             android:src="@mipmap/vegetal" />
@@ -291,25 +305,28 @@
                                                 android:id="@+id/textView13" />
 
                                             <EditText
-                                                android:layout_width="45dp"
+                                                android:layout_width="35dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
                                                 android:id="@+id/txtCantVegetal"
-                                                android:text="1" />
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioVegetal" />
+                                            android:id="@+id/lblPrecioVegetal"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnVegetal" />
+                                            android:id="@+id/btnVegetal"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
 
@@ -323,10 +340,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Tropical"
-                                            android:id="@+id/textView6" />
+                                            android:id="@+id/textView6"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgTropical"
                                             android:src="@mipmap/tropical" />
@@ -344,25 +362,28 @@
                                                 android:id="@+id/textView14" />
 
                                             <EditText
-                                                android:layout_width="45dp"
+                                                android:layout_width="35dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
                                                 android:id="@+id/txtCantTropical"
-                                                android:text="1" />
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioTropical" />
+                                            android:id="@+id/lblPrecioTropical"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnTropical" />
+                                            android:id="@+id/btnTropical"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
                                 </TableRow>
@@ -372,13 +393,13 @@
 
                         <LinearLayout
                             android:id="@+id/tab2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <TableLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="wrap_content">
 
                                 <TableRow
                                     android:layout_width="match_parent"
@@ -394,10 +415,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Coca-cola"
-                                            android:id="@+id/textView7" />
+                                            android:id="@+id/textView7"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgCocacola"
                                             android:src="@mipmap/cocacola" />
@@ -412,28 +434,32 @@
                                                 android:layout_height="wrap_content"
                                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                                 android:text="@string/cantidad"
-                                                android:id="@+id/textView15" />
+                                                android:id="@+id/textView15"
+                                                android:textSize="15dp" />
 
                                             <EditText
                                                 android:layout_width="45dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
-                                                android:id="@+id/editText6"
-                                                android:text="1" />
+                                                android:id="@+id/txtCantCoca"
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioCoca" />
+                                            android:id="@+id/lblPrecioCoca"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnCoca" />
+                                            android:id="@+id/btnCoca"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
 
@@ -447,10 +473,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Limón"
-                                            android:id="@+id/textView8" />
+                                            android:id="@+id/textView8"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgLimon"
                                             android:src="@mipmap/limon" />
@@ -465,29 +492,32 @@
                                                 android:layout_height="wrap_content"
                                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                                 android:text="@string/cantidad"
-                                                android:id="@+id/textView16" />
+                                                android:id="@+id/textView16"
+                                                android:textSize="15dp" />
 
                                             <EditText
                                                 android:layout_width="45dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
-                                                android:id="@+id/editText7"
-                                                android:text="1" />
+                                                android:id="@+id/txtCantLimon"
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Medium Text"
-                                            android:id="@+id/lblPrecioLimon" />
+                                            android:id="@+id/lblPrecioLimon"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnLimon" />
+                                            android:id="@+id/btnLimon"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
 
@@ -501,10 +531,11 @@
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Naranja"
-                                            android:id="@+id/textView9" />
+                                            android:id="@+id/textView9"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgNaranja"
                                             android:src="@mipmap/naranja" />
@@ -519,29 +550,32 @@
                                                 android:layout_height="wrap_content"
                                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                                 android:text="@string/cantidad"
-                                                android:id="@+id/textView17" />
+                                                android:id="@+id/textView17"
+                                                android:textSize="15dp" />
 
                                             <EditText
                                                 android:layout_width="45dp"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
-                                                android:id="@+id/editText8"
-                                                android:text="1" />
+                                                android:id="@+id/txtCantNaranja"
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Medium Text"
-                                            android:id="@+id/lblPrecioNaranja" />
+                                            android:id="@+id/lblPrecioNaranja"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnNaranja" />
+                                            android:id="@+id/btnNaranja"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
                                 </TableRow>
@@ -553,17 +587,18 @@
                                     <LinearLayout
                                         android:orientation="vertical"
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="wrap_content">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Nestea"
-                                            android:id="@+id/textView18" />
+                                            android:id="@+id/textView18"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgNestea"
                                             android:src="@mipmap/nestea" />
@@ -578,28 +613,30 @@
                                                 android:layout_height="wrap_content"
                                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                                 android:text="@string/cantidad"
-                                                android:id="@+id/textView19" />
+                                                android:id="@+id/textView19"
+                                                android:textSize="15dp" />
 
                                             <EditText
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
-                                                android:id="@+id/editText"
-                                                android:text="1" />
+                                                android:id="@+id/txtCantNestea"
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Medium Text"
-                                            android:id="@+id/lblPrecioNestea" />
+                                            android:id="@+id/lblPrecioNestea"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
+                                            android:text="Añadir"
                                             android:id="@+id/btnNestea" />
 
                                     </LinearLayout>
@@ -607,17 +644,18 @@
                                     <LinearLayout
                                         android:orientation="vertical"
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="wrap_content">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Cerveza"
-                                            android:id="@+id/textView20" />
+                                            android:id="@+id/textView20"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgCerveza"
                                             android:src="@mipmap/cerveza" />
@@ -632,46 +670,50 @@
                                                 android:layout_height="wrap_content"
                                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                                 android:text="@string/cantidad"
-                                                android:id="@+id/textView22" />
+                                                android:id="@+id/textView22"
+                                                android:textSize="15dp" />
 
                                             <EditText
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
-                                                android:id="@+id/editText2"
-                                                android:text="1" />
+                                                android:id="@+id/txtCantCerveza"
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Medium Text"
-                                            android:id="@+id/lblPrecioCerveza" />
+                                            android:id="@+id/lblPrecioCerveza"
+                                            android:textSize="15dp" />
 
                                         <Button
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/añadir"
-                                            android:id="@+id/btnCerveza" />
+                                            android:id="@+id/btnCerveza"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
                                         android:orientation="vertical"
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="wrap_content">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:text="Agua"
-                                            android:id="@+id/textView21" />
+                                            android:id="@+id/textView21"
+                                            android:textSize="15dp" />
 
                                         <ImageView
-                                            android:layout_width="100dp"
+                                            android:layout_width="80dp"
                                             android:layout_height="80dp"
                                             android:id="@+id/imgAgua"
                                             android:src="@mipmap/agua" />
@@ -686,29 +728,32 @@
                                                 android:layout_height="wrap_content"
                                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                                 android:text="@string/cantidad"
-                                                android:id="@+id/textView23" />
+                                                android:id="@+id/textView23"
+                                                android:textSize="15dp" />
 
                                             <EditText
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:inputType="number"
                                                 android:ems="10"
-                                                android:id="@+id/editText3"
-                                                android:text="1" />
+                                                android:id="@+id/txtCantAgua"
+                                                android:text="1"
+                                                android:textSize="15dp" />
                                         </LinearLayout>
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnAgua" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Medium Text"
-                                            android:id="@+id/lblPrecioAgua" />
+                                            android:id="@+id/lblPrecioAgua"
+                                            android:textSize="15dp" />
+
+                                        <Button
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/añadir"
+                                            android:id="@+id/btnAgua"
+                                            android:textSize="15dp" />
 
                                     </LinearLayout>
                                 </TableRow>
@@ -724,7 +769,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Siguiente"
-                android:id="@+id/btnSiuiente2" />
+                android:id="@+id/btnSiguiente2" />
 
         </LinearLayout>
     </ScrollView>

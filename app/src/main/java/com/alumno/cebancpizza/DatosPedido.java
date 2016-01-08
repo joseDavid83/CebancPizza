@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,10 +21,12 @@ public class DatosPedido extends AppCompatActivity {
     private TabHost TbH;
     private Spinner tip,tam;
     private Button sig;
-    private TextView preciocarbo,preciobar,precioque,preciove,preciotro;
-    private EditText cantCar,cantBar,cantQue,cantVe,cantTro;
+    private TextView preciocarbo,preciobar,precioque,preciove,preciotro,preciococa,preciolimon,precionaranja,precionestea,preciocerveza,precioagua;
+    private EditText cantCar,cantBar,cantQue,cantVe,cantTro,cantCo,cantLi,cantNa,cantNes,cantCer,cantAgua;
     int tampizza=3,tipopizza=5;
-    private double[][] precios = new double[tampizza][tipopizza];
+    private double[][] preciospizza = new double[tampizza][tipopizza];
+    private double[] preciosbebida= {1.99,1.05,1.5,1.35,1,1.25};
+    private int posispinner=0;
 
     //variables para recoger los datos del cliente
     String n,d,t;
@@ -38,12 +41,24 @@ public class DatosPedido extends AppCompatActivity {
         precioque=(TextView)findViewById(R.id.lblPrecioQuesos);
         preciove=(TextView)findViewById(R.id.lblPrecioVegetal);
         preciotro=(TextView)findViewById(R.id.lblPrecioTropical);
+        preciococa=(TextView)findViewById(R.id.lblPrecioCoca);
+        preciolimon=(TextView)findViewById(R.id.lblPrecioLimon);
+        precionaranja=(TextView)findViewById(R.id.lblPrecioNaranja);
+        precionestea=(TextView)findViewById(R.id.lblPrecioNestea);
+        preciocerveza=(TextView)findViewById(R.id.lblPrecioCerveza);
+        precioagua=(TextView)findViewById(R.id.lblPrecioAgua);
 
         cantCar=(EditText)findViewById(R.id.txtCantCarbo);
         cantBar=(EditText)findViewById(R.id.txtCantBar);
         cantQue=(EditText)findViewById(R.id.txtCantQuesos);
         cantVe=(EditText)findViewById(R.id.txtCantVegetal);
         cantTro=(EditText)findViewById(R.id.txtCantTropical);
+        cantCo=(EditText)findViewById(R.id.txtCantCoca);
+        cantLi=(EditText)findViewById(R.id.txtCantLimon);
+        cantNa=(EditText)findViewById(R.id.txtCantNaranja);
+        cantNes=(EditText)findViewById(R.id.txtCantNestea);
+        cantCer=(EditText)findViewById(R.id.txtCantCerveza);
+        cantAgua=(EditText)findViewById(R.id.txtCantAgua);
 
 
         //recogemos los datos del cliente de la actividad anterior
@@ -51,7 +66,7 @@ public class DatosPedido extends AppCompatActivity {
         d=getIntent().getStringExtra("direccion");
         t=getIntent().getStringExtra("telefono");
 
-        rellenarArray(precios);
+        rellenarArray(preciospizza);
 
         sig.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +103,8 @@ public class DatosPedido extends AppCompatActivity {
         tip.setAdapter(adaptadortip);
         tam.setAdapter(adaptadortam);
 
+        //Esto es el spinner del tipo de massa
+
         tip.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -103,31 +120,34 @@ public class DatosPedido extends AppCompatActivity {
             }
         });
 
+        //Este es el spinner del tamaño de la pizza
+        //Segun el tamaño cambia el precio
+
         tam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //lblMensaje.setText("Seleccionado:" +parent.getItemAtPosition(position));
                 //Podemos recuperar el ítem seleccionado usando
                 //parent.getItemAtPosition(position)
-
+                posispinner=position;
                 if(position==0){
-                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * precios[0][0]+" €");
-                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * precios[0][1]+" €");
-                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * precios[0][2]+" €");
-                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * precios[0][3]+" €");
-                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * precios[0][4]+" €");
+                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]+" €");
+                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]+" €");
+                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]+" €");
+                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]+" €");
+                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]+" €");
                 }else if(position==1) {
-                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * precios[1][0]+" €");
-                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * precios[1][1]+" €");
-                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * precios[1][2]+" €");
-                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * precios[1][3]+" €");
-                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * precios[1][4]+" €");
+                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]+" €");
+                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]+" €");
+                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]+" €");
+                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]+" €");
+                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]+" €");
                 }else{
-                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * precios[2][0]+" €");
-                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * precios[2][1]+" €");
-                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * precios[2][2]+" €");
-                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * precios[2][3]+" €");
-                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * precios[2][4]+" €");
+                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]+" €");
+                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]+" €");
+                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]+" €");
+                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]+" €");
+                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
                 }
             }
 
@@ -137,6 +157,182 @@ public class DatosPedido extends AppCompatActivity {
             }
         });
         Log.e("info", "entra");
+
+        //Ahora cuando cambia la cantidad
+
+        cantCar.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantCar.getText().toString());
+                    if (posispinner==0){
+                        preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]+" €");
+                    }else if(posispinner==1){
+                        preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]+" €");
+                    }else{
+                        preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]+" €");
+                    }
+                }
+                return false;
+            }
+        });
+
+        cantBar.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantBar.getText().toString());
+                    if (posispinner==0){
+                        preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]+" €");
+                    }else if(posispinner==1){
+                        preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]+" €");
+                    }else{
+                        preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]+" €");
+                    }
+                }
+                return false;
+            }
+        });
+
+        cantQue.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantQue.getText().toString());
+                    if (posispinner==0){
+                        precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]+" €");
+                    }else if(posispinner==1){
+                        precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]+" €");
+                    }else{
+                        precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]+" €");
+                    }
+                }
+                return false;
+            }
+        });
+
+        cantVe.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantVe.getText().toString());
+                    if (posispinner==0){
+                        preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]+" €");
+                    }else if(posispinner==1){
+                        preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]+" €");
+                    }else{
+                        preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]+" €");
+                    }
+                }
+                return false;
+            }
+        });
+
+        cantTro.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantTro.getText().toString());
+                    if (posispinner==0){
+                        preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]+" €");
+                    }else if(posispinner==1){
+                        preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]+" €");
+                    }else{
+                        preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
+                    }
+                }
+                return false;
+            }
+        });
+
+        cantCo.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantCo.getText().toString());
+
+                    preciococa.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
+
+                }
+                return false;
+            }
+        });
+
+        cantLi.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantLi.getText().toString());
+
+                    preciolimon.setText("Precio: "+ Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]+" €");
+
+                }
+                return false;
+            }
+        });
+
+        cantNa.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantNa.getText().toString());
+
+                    precionaranja.setText("Precio: "+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]+" €");
+
+                }
+                return false;
+            }
+        });
+
+        cantNes.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantNes.getText().toString());
+
+                    precionestea.setText("Precio: "+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]+" €");
+
+                }
+                return false;
+            }
+        });
+
+        cantCer.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantCer.getText().toString());
+
+                    preciocerveza.setText("Precio: "+ Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]+" €");
+
+                }
+                return false;
+            }
+        });
+
+        cantAgua.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Se captura el texto al pulsar enter
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    EditText et = (EditText) v;
+                    Log.e("Info", cantAgua.getText().toString());
+
+                    precioagua.setText("Precio: "+ Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]+" €");
+
+                }
+                return false;
+            }
+        });
     }
 
     public void lanzarResumen(){
