@@ -44,6 +44,12 @@ public class DatosPedido extends AppCompatActivity {
         setContentView(R.layout.pedido);
 
         sig=(Button)findViewById(R.id.btnSiguiente2);
+        botonCarbonara=(Button)findViewById(R.id.btnCarbonara);
+        botonBarbacoa=(Button)findViewById(R.id.btnBarbacoa);
+        boton4Quesos=(Button)findViewById(R.id.btn4Quesos);
+        botonVegetal=(Button)findViewById(R.id.btnVegetal);
+        botonTropical=(Button)findViewById(R.id.btnTropical);
+
         preciocarbo=(TextView)findViewById(R.id.lblPrecioCarbonara);
         preciobar=(TextView)findViewById(R.id.lblPrecioBarbacoa);
         precioque=(TextView)findViewById(R.id.lblPrecioQuesos);
@@ -67,12 +73,6 @@ public class DatosPedido extends AppCompatActivity {
         cantNes=(EditText)findViewById(R.id.txtCantNestea);
         cantCer=(EditText)findViewById(R.id.txtCantCerveza);
         cantAgua=(EditText)findViewById(R.id.txtCantAgua);
-
-        botonCarbonara=(Button)findViewById(R.id.btnCarbonara);
-        botonBarbacoa=(Button)findViewById(R.id.btnBarbacoa);
-        boton4Quesos=(Button)findViewById(R.id.btn4Quesos);
-        botonVegetal=(Button)findViewById(R.id.btnVegetal);
-        botonTropical=(Button)findViewById(R.id.btnTropical);
 
         textoCarbonara=(TextView)findViewById(R.id.txtCarbonara);
         textoBarbacoa=(TextView)findViewById(R.id.txtBarbacoa);
@@ -176,6 +176,12 @@ public class DatosPedido extends AppCompatActivity {
                     preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
                     tamañoPizza="Familiar";
                 }
+                preciococa.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
+                preciolimon.setText("Precio: " + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1] + " €");
+                precionaranja.setText("Precio: "+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]+" €");
+                precionestea.setText("Precio: "+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]+" €");
+                preciocerveza.setText("Precio: " + Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4] + " €");
+                precioagua.setText("Precio: " + Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5] + " €");
             }
 
             @Override
