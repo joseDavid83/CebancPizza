@@ -194,12 +194,7 @@ public class DatosPedido extends AppCompatActivity {
         botonCarbonara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantCar.getText().toString());
-                arrayPizzas.add(textoCarbonara.getText().toString());
-                arrayPizzas.add(tamañoPizza.toString());
-                arrayPizzas.add(tipoMasa.toString());
-                arrayPizzas.add(preciocarbo.getText().toString());
-
+                arrayPizzas.add(cantCar.getText().toString()+", "+textoCarbonara.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciocarbo.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -208,12 +203,7 @@ public class DatosPedido extends AppCompatActivity {
         botonBarbacoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantBar.getText().toString());
-                arrayPizzas.add(textoBarbacoa.getText().toString());
-                arrayPizzas.add(tamañoPizza.toString());
-                arrayPizzas.add(tipoMasa.toString());
-                arrayPizzas.add(preciobar.getText().toString());
-
+                arrayPizzas.add(cantBar.getText().toString()+", "+textoBarbacoa.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciobar.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
