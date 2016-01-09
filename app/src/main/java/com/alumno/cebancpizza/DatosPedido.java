@@ -191,6 +191,8 @@ public class DatosPedido extends AppCompatActivity {
         });
         Log.e("info", "entra");
 
+        //añadir a un arraylist las pizzas que elija el usuario
+
         botonCarbonara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,7 +211,34 @@ public class DatosPedido extends AppCompatActivity {
             }
         });
 
-        //Ahora cuando cambia la cantidad
+        boton4Quesos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayPizzas.add(cantQue.getText().toString()+", "+texto4Quesos.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+precioque.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonVegetal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayPizzas.add(cantVe.getText().toString() +", "+textoVegetal.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciove.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonTropical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayPizzas.add(cantTro.getText().toString()+", "+textoTropical.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciotro.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        //Ahora cuando cambia la cantidad cambia el precio
 
         cantCar.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
