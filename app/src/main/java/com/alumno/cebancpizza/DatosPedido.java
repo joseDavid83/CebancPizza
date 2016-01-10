@@ -24,17 +24,20 @@ public class DatosPedido extends AppCompatActivity {
     private TabHost TbH;
     private Spinner tip,tam;
     private Button sig;
-    private TextView preciocarbo,preciobar,precioque,preciove,preciotro,preciococa,preciolimon,precionaranja,precionestea,preciocerveza,precioagua;
+    private TextView preciocarbo,preciobar,precioque,preciove,preciotro,preciococacola,preciolimon,precionaranja,precionestea,preciocerveza,precioagua;
     private EditText cantCar,cantBar,cantQue,cantVe,cantTro,cantCo,cantLi,cantNa,cantNes,cantCer,cantAgua;
     int tampizza=3,tipopizza=5;
     private double[][] preciospizza = new double[tampizza][tipopizza];
     private double[] preciosbebida= {1.99,1.05,1.5,1.35,1,1.25};
     private int posispinner=0;
-    private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical;
+    private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical,botonCocaCola,botonLimon,botonNaranja,botonNestea,botonCerveza,botonAgua;
 
     private TextView textoCarbonara,textoBarbacoa,texto4Quesos,textoVegetal,textoTropical;
     ArrayList<String> arrayPizzas = new ArrayList<String> ();
     private String tamañoPizza,tipoMasa;
+
+    private TextView textoCocaCola,textoLimon,textoNestea,textoNaranja,textoCerveza,textoAgua;
+    ArrayList<String> arrayBebidas = new ArrayList<String> ();
 
     //variables para recoger los datos del cliente
     String n,d,t;
@@ -49,13 +52,19 @@ public class DatosPedido extends AppCompatActivity {
         boton4Quesos=(Button)findViewById(R.id.btn4Quesos);
         botonVegetal=(Button)findViewById(R.id.btnVegetal);
         botonTropical=(Button)findViewById(R.id.btnTropical);
+        botonCocaCola=(Button)findViewById(R.id.btnCocaCola);
+        botonLimon=(Button)findViewById(R.id.btnLimon);
+        botonNaranja=(Button)findViewById(R.id.btnNaranja);
+        botonNestea=(Button)findViewById(R.id.btnNestea);
+        botonCerveza=(Button)findViewById(R.id.btnCerveza);
+        botonAgua=(Button)findViewById(R.id.btnAgua);
 
         preciocarbo=(TextView)findViewById(R.id.lblPrecioCarbonara);
         preciobar=(TextView)findViewById(R.id.lblPrecioBarbacoa);
         precioque=(TextView)findViewById(R.id.lblPrecioQuesos);
         preciove=(TextView)findViewById(R.id.lblPrecioVegetal);
         preciotro=(TextView)findViewById(R.id.lblPrecioTropical);
-        preciococa=(TextView)findViewById(R.id.lblPrecioCoca);
+        preciococacola=(TextView)findViewById(R.id.lblPrecioCocaCola);
         preciolimon=(TextView)findViewById(R.id.lblPrecioLimon);
         precionaranja=(TextView)findViewById(R.id.lblPrecioNaranja);
         precionestea=(TextView)findViewById(R.id.lblPrecioNestea);
@@ -67,7 +76,7 @@ public class DatosPedido extends AppCompatActivity {
         cantQue=(EditText)findViewById(R.id.txtCantQuesos);
         cantVe=(EditText)findViewById(R.id.txtCantVegetal);
         cantTro=(EditText)findViewById(R.id.txtCantTropical);
-        cantCo=(EditText)findViewById(R.id.txtCantCoca);
+        cantCo=(EditText)findViewById(R.id.txtCantCocaCola);
         cantLi=(EditText)findViewById(R.id.txtCantLimon);
         cantNa=(EditText)findViewById(R.id.txtCantNaranja);
         cantNes=(EditText)findViewById(R.id.txtCantNestea);
@@ -79,6 +88,12 @@ public class DatosPedido extends AppCompatActivity {
         texto4Quesos=(TextView)findViewById(R.id.txt4Quesos);
         textoVegetal=(TextView)findViewById(R.id.txtVegetal);
         textoTropical=(TextView)findViewById(R.id.txtTropical);
+        textoCocaCola=(TextView)findViewById(R.id.txtCocaCola);
+        textoLimon=(TextView)findViewById(R.id.txtLimon);
+        textoNaranja=(TextView)findViewById(R.id.txtNaranja);
+        textoNestea=(TextView)findViewById(R.id.txtNestea);
+        textoCerveza=(TextView)findViewById(R.id.txtCerveza);
+        textoAgua=(TextView)findViewById(R.id.txtAgua);
 
         //recogemos los datos del cliente de la actividad anterior
         n=getIntent().getStringExtra("nombre");
@@ -176,7 +191,7 @@ public class DatosPedido extends AppCompatActivity {
                     preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
                     tamañoPizza="Familiar";
                 }
-                preciococa.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
+                preciococacola.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
                 preciolimon.setText("Precio: " + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1] + " €");
                 precionaranja.setText("Precio: "+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]+" €");
                 precionestea.setText("Precio: "+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]+" €");
@@ -205,7 +220,7 @@ public class DatosPedido extends AppCompatActivity {
         botonBarbacoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantBar.getText().toString()+", "+textoBarbacoa.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciobar.getText().toString());
+                arrayPizzas.add(cantBar.getText().toString() + ", " + textoBarbacoa.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciobar.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -214,7 +229,7 @@ public class DatosPedido extends AppCompatActivity {
         boton4Quesos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantQue.getText().toString()+", "+texto4Quesos.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+precioque.getText().toString());
+                arrayPizzas.add(cantQue.getText().toString() + ", " + texto4Quesos.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + precioque.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -232,7 +247,7 @@ public class DatosPedido extends AppCompatActivity {
         botonTropical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantTro.getText().toString()+", "+textoTropical.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciotro.getText().toString());
+                arrayPizzas.add(cantTro.getText().toString() + ", " + textoTropical.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciotro.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -318,15 +333,71 @@ public class DatosPedido extends AppCompatActivity {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     EditText et = (EditText) v;
                     Log.e("Info", cantTro.getText().toString());
-                    if (posispinner==0){
-                        preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]+" €");
-                    }else if(posispinner==1){
-                        preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]+" €");
-                    }else{
-                        preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
+                    if (posispinner == 0) {
+                        preciotro.setText("Precio: " + Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4] + " €");
+                    } else if (posispinner == 1) {
+                        preciotro.setText("Precio: " + Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4] + " €");
+                    } else {
+                        preciotro.setText("Precio: " + Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4] + " €");
                     }
                 }
                 return false;
+            }
+        });
+
+        //añadir las bebidas a otro arraylist
+
+        botonCocaCola.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayBebidas.add(cantCo.getText().toString()+", "+textoCocaCola.getText().toString()+", "+preciococacola.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonLimon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayBebidas.add(cantLi.getText().toString()+", "+textoLimon.getText().toString()+", "+preciolimon.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonNaranja.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayBebidas.add(cantNa.getText().toString()+", "+textoNaranja.getText().toString()+", "+precionaranja.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonNestea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayBebidas.add(cantNes.getText().toString()+", "+textoNestea.getText().toString()+", "+precionestea.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonCerveza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayBebidas.add(cantCer.getText().toString()+", "+textoCerveza.getText().toString()+", "+preciocerveza.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
+
+        botonAgua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayBebidas.add(cantAgua.getText().toString()+", "+textoAgua.getText().toString()+", "+precioagua.getText().toString());
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
+                toast1.show();
             }
         });
 
@@ -337,7 +408,7 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantCo.getText().toString());
 
-                    preciococa.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
+                    preciococacola.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
 
                 }
                 return false;
@@ -421,6 +492,7 @@ public class DatosPedido extends AppCompatActivity {
         i.putExtra("direccion", d);
         i.putExtra("telefono", t);
         i.putExtra("ap",arrayPizzas);
+        i.putExtra("ab",arrayBebidas);
         startActivity(i);
     }
 

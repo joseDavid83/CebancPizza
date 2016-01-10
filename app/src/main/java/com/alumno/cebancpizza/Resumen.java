@@ -9,9 +9,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Resumen extends AppCompatActivity {
-    private TextView nombre2,dire2,telef2,pizzas;
+    private TextView nombre2,dire2,telef2,pizzas,bebidas;
     ArrayList<String> arrayPizzasResumen = new ArrayList<String>();
-    private String acumulapedido="";
+    ArrayList<String> arrayBebidasResumen = new ArrayList<String>();
+    private String acumulapizzas="",acumulabebidas="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,19 +23,25 @@ public class Resumen extends AppCompatActivity {
         dire2=(TextView)findViewById(R.id.lblDireccion);
         telef2=(TextView)findViewById(R.id.lblTelefono);
         pizzas=(TextView)findViewById(R.id.lblPizzas);
+        bebidas=(TextView)findViewById(R.id.lblBebidas);
 
         nombre2.setText("Nombre: "+getIntent().getStringExtra("nombre"));
         dire2.setText("Dirección: " + getIntent().getStringExtra("direccion"));
         telef2.setText("Teléfono: "+getIntent().getStringExtra("telefono"));
 
         arrayPizzasResumen=getIntent().getStringArrayListExtra("ap");
+        arrayBebidasResumen=getIntent().getStringArrayListExtra("ab");
 
         for(int i=0;i<=arrayPizzasResumen.size()-1;i++){
-            acumulapedido=acumulapedido + arrayPizzasResumen.get(i)+"\n";
+            acumulapizzas=acumulapizzas + arrayPizzasResumen.get(i)+"\n";
         }
+        pizzas.setText(acumulapizzas);
 
+        for(int i=0;i<=arrayBebidasResumen.size()-1;i++){
+            acumulabebidas=acumulabebidas + arrayBebidasResumen.get(i)+"\n";
+        }
+        bebidas.setText(acumulabebidas);
 
-        pizzas.setText(acumulapedido);
     }
 
 }
