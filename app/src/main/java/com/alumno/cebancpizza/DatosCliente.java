@@ -56,7 +56,7 @@ public class DatosCliente extends AppCompatActivity{
     public boolean datos(){
         boolean lleno;
         if(nombre.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")){
-            Toast.makeText(this, "Falta algun dato", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Falta algún dato", Toast.LENGTH_SHORT).show();
             lleno=false;
         }else{
             nomb=nombre.getText().toString();

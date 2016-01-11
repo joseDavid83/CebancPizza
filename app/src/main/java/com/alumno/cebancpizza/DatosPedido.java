@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class DatosPedido extends AppCompatActivity {
     private TabHost TbH;
     private Spinner tip,tam;
-    private Button sig;
+    private Button sig,sal;
     private TextView preciocarbo,preciobar,precioque,preciove,preciotro,preciococacola,preciolimon,precionaranja,precionestea,preciocerveza,precioagua;
     private EditText cantCar,cantBar,cantQue,cantVe,cantTro,cantCo,cantLi,cantNa,cantNes,cantCer,cantAgua;
     int tampizza=3,tipopizza=5;
@@ -43,6 +43,7 @@ public class DatosPedido extends AppCompatActivity {
         setContentView(R.layout.pedido);
 
         sig=(Button)findViewById(R.id.btnSiguiente2);
+        sal=(Button)findViewById(R.id.btnSalir2);
         botonCarbonara=(Button)findViewById(R.id.btnCarbonara);
         botonBarbacoa=(Button)findViewById(R.id.btnBarbacoa);
         boton4Quesos=(Button)findViewById(R.id.btn4Quesos);
@@ -102,6 +103,13 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lanzarResumen();
+            }
+        });
+
+        sal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
@@ -180,11 +188,11 @@ public class DatosPedido extends AppCompatActivity {
                     preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]);
                     tamañoPizza="Mediana";
                 }else{
-                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]+" €");
-                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]+" €");
-                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]+" €");
-                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]+" €");
-                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
+                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]);
+                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
+                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
+                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
+                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]);
                     tamañoPizza="Familiar";
                 }
                 preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] );

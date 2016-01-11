@@ -765,23 +765,19 @@
                 </LinearLayout>
             </TabHost>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Siguiente"
+                android:id="@+id/btnSiguiente2"
+                android:textSize="15dp" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Siguiente"
-                    android:id="@+id/btnSiguiente2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Salir"
-                    android:id="@+id/btnSalir2" />
-            </LinearLayout>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Salir"
+                android:id="@+id/btnSalir2"
+                android:textSize="15dp" />
 
         </LinearLayout>
     </ScrollView>
