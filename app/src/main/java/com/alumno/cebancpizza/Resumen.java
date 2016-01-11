@@ -35,7 +35,7 @@ public class Resumen extends AppCompatActivity {
         arrayBebidasResumen=getIntent().getStringArrayListExtra("ab");
 
         totalprecio=getIntent().getDoubleExtra("acumprecios",totalprecio);
-        Log.e("info","eooooo");
+        Log.e("info","eoooooo");
 
         preciototal.setText("El precio total es: "+totalprecio);
 
