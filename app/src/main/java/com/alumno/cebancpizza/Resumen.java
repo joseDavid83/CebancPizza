@@ -13,7 +13,7 @@ public class Resumen extends AppCompatActivity {
     ArrayList<String> arrayPizzasResumen = new ArrayList<String>();
     ArrayList<String> arrayBebidasResumen = new ArrayList<String>();
     private String acumulapizzas="",acumulabebidas="";
-    private int totalprecio;
+    private double totalprecio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +34,10 @@ public class Resumen extends AppCompatActivity {
         arrayPizzasResumen=getIntent().getStringArrayListExtra("ap");
         arrayBebidasResumen=getIntent().getStringArrayListExtra("ab");
 
-        totalprecio=Integer.parseInt(getIntent().getStringExtra("acumprecios"));
+        totalprecio=getIntent().getDoubleExtra("acumprecios",totalprecio);
+        Log.e("info","eooooo");
 
-        preciototal.setText(totalprecio);
+        preciototal.setText("El precio total es: "+totalprecio);
 
         for(int i=0;i<=arrayPizzasResumen.size()-1;i++){
             acumulapizzas=acumulapizzas + arrayPizzasResumen.get(i)+"\n";

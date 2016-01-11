@@ -33,7 +33,7 @@ public class DatosPedido extends AppCompatActivity {
     private String tamañoPizza,tipoMasa;
     private TextView textoCocaCola,textoLimon,textoNestea,textoNaranja,textoCerveza,textoAgua;
     ArrayList<String> arrayBebidas = new ArrayList<String> ();
-    Integer acumulaprecios;
+    double acumulaprecios=0;
     //variables para recoger los datos del cliente
     String n,d,t;
 
@@ -166,18 +166,18 @@ public class DatosPedido extends AppCompatActivity {
                 //parent.getItemAtPosition(position)
                 posispinner=position;
                 if(position==0){
-                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]+" €");
-                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]+" €");
-                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]+" €");
-                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]+" €");
-                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]+" €");
+                    preciocarbo.setText(""+Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]);
+                    preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]);
+                    precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]);
+                    preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]);
+                    preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]);
                     tamañoPizza="Individual";
                 }else if(position==1) {
-                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]+" €");
-                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]+" €");
-                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]+" €");
-                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]+" €");
-                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]+" €");
+                    preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]);
+                    preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]);
+                    precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]);
+                    preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]);
+                    preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]);
                     tamañoPizza="Mediana";
                 }else{
                     preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]+" €");
@@ -187,12 +187,12 @@ public class DatosPedido extends AppCompatActivity {
                     preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]+" €");
                     tamañoPizza="Familiar";
                 }
-                preciococacola.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
-                preciolimon.setText("Precio: " + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1] + " €");
-                precionaranja.setText("Precio: "+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]+" €");
-                precionestea.setText("Precio: "+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]+" €");
-                preciocerveza.setText("Precio: " + Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4] + " €");
-                precioagua.setText("Precio: " + Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5] + " €");
+                preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] );
+                preciolimon.setText("" + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1] );
+                precionaranja.setText(""+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
+                precionestea.setText(""+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
+                preciocerveza.setText("" + Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]);
+                precioagua.setText("" + Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]);
             }
 
             @Override
@@ -208,7 +208,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantCar.getText().toString()+", "+textoCarbonara.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciocarbo.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(preciocarbo.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(preciocarbo.getText().toString());
+
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -218,7 +219,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantBar.getText().toString() + ", " + textoBarbacoa.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciobar.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(preciobar.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(preciobar.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -228,7 +229,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantQue.getText().toString() + ", " + texto4Quesos.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + precioque.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(precioque.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(precioque.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -238,7 +239,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantVe.getText().toString() +", "+textoVegetal.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciove.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(preciove.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(preciove.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -248,7 +249,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantTro.getText().toString() + ", " + textoTropical.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciotro.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(preciotro.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(preciotro.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -263,11 +264,11 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantCar.getText().toString());
                     if (posispinner==0){
-                        preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]+" €");
+                        preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]);
                     }else if(posispinner==1){
-                        preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]+" €");
+                        preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]);
                     }else{
-                        preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]+" €");
+                        preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]);
                     }
                 }
                 return false;
@@ -281,11 +282,11 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantBar.getText().toString());
                     if (posispinner==0){
-                        preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]+" €");
+                        preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]);
                     }else if(posispinner==1){
-                        preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]+" €");
+                        preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]);
                     }else{
-                        preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]+" €");
+                        preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
                     }
                 }
                 return false;
@@ -299,11 +300,11 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantQue.getText().toString());
                     if (posispinner==0){
-                        precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]+" €");
+                        precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]);
                     }else if(posispinner==1){
-                        precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]+" €");
+                        precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]);
                     }else{
-                        precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]+" €");
+                        precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
                     }
                 }
                 return false;
@@ -317,11 +318,11 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantVe.getText().toString());
                     if (posispinner==0){
-                        preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]+" €");
+                        preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]);
                     }else if(posispinner==1){
-                        preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]+" €");
+                        preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]);
                     }else{
-                        preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]+" €");
+                        preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
                     }
                 }
                 return false;
@@ -335,11 +336,11 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantTro.getText().toString());
                     if (posispinner == 0) {
-                        preciotro.setText("Precio: " + Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4] + " €");
+                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4] );
                     } else if (posispinner == 1) {
-                        preciotro.setText("Precio: " + Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4] + " €");
+                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]);
                     } else {
-                        preciotro.setText("Precio: " + Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4] + " €");
+                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]);
                     }
                 }
                 return false;
@@ -352,7 +353,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantCo.getText().toString()+", "+textoCocaCola.getText().toString()+", "+preciococacola.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(preciococacola.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(preciococacola.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -362,7 +363,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantLi.getText().toString()+", "+textoLimon.getText().toString()+", "+preciolimon.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(preciolimon.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(preciolimon.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -372,7 +373,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantNa.getText().toString()+", "+textoNaranja.getText().toString()+", "+precionaranja.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(precionaranja.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(precionaranja.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -382,7 +383,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantNes.getText().toString()+", "+textoNestea.getText().toString()+", "+precionestea.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(precionestea.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(precionestea.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -392,7 +393,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantCer.getText().toString()+", "+textoCerveza.getText().toString()+", "+preciocerveza.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(preciocerveza.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(preciocerveza.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -402,7 +403,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantAgua.getText().toString()+", "+textoAgua.getText().toString()+", "+precioagua.getText().toString());
-                acumulaprecios=acumulaprecios+Integer.parseInt(precioagua.getText().toString());
+                acumulaprecios=acumulaprecios+Double.parseDouble(precioagua.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -415,7 +416,7 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantCo.getText().toString());
 
-                    preciococacola.setText("Precio: " + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] + " €");
+                    preciococacola.setText(""+Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0]);
 
                 }
                 return false;
@@ -429,7 +430,7 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantLi.getText().toString());
 
-                    preciolimon.setText("Precio: "+ Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]+" €");
+                    preciolimon.setText(""+ Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]);
 
                 }
                 return false;
@@ -443,7 +444,7 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantNa.getText().toString());
 
-                    precionaranja.setText("Precio: "+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]+" €");
+                    precionaranja.setText(""+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
 
                 }
                 return false;
@@ -457,7 +458,7 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantNes.getText().toString());
 
-                    precionestea.setText("Precio: "+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]+" €");
+                    precionestea.setText(""+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
 
                 }
                 return false;
@@ -471,7 +472,7 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantCer.getText().toString());
 
-                    preciocerveza.setText("Precio: "+ Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]+" €");
+                    preciocerveza.setText(""+ Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]);
 
                 }
                 return false;
@@ -485,7 +486,7 @@ public class DatosPedido extends AppCompatActivity {
                     EditText et = (EditText) v;
                     Log.e("Info", cantAgua.getText().toString());
 
-                    precioagua.setText("Precio: "+ Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]+" €");
+                    precioagua.setText(""+ Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]);
 
                 }
                 return false;
