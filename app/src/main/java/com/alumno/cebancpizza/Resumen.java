@@ -9,10 +9,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Resumen extends AppCompatActivity {
-    private TextView nombre2,dire2,telef2,pizzas,bebidas;
+    private TextView nombre2,dire2,telef2,pizzas,bebidas,preciototal;
     ArrayList<String> arrayPizzasResumen = new ArrayList<String>();
     ArrayList<String> arrayBebidasResumen = new ArrayList<String>();
     private String acumulapizzas="",acumulabebidas="";
+    private int totalprecio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class Resumen extends AppCompatActivity {
         telef2=(TextView)findViewById(R.id.lblTelefono);
         pizzas=(TextView)findViewById(R.id.lblPizzas);
         bebidas=(TextView)findViewById(R.id.lblBebidas);
+        preciototal=(TextView)findViewById(R.id.lblTotalPrecio);
 
         nombre2.setText("Nombre: "+getIntent().getStringExtra("nombre"));
         dire2.setText("Dirección: " + getIntent().getStringExtra("direccion"));
@@ -31,6 +33,10 @@ public class Resumen extends AppCompatActivity {
 
         arrayPizzasResumen=getIntent().getStringArrayListExtra("ap");
         arrayBebidasResumen=getIntent().getStringArrayListExtra("ab");
+
+        totalprecio=Integer.parseInt(getIntent().getStringExtra("acumprecios"));
+
+        preciototal.setText(totalprecio);
 
         for(int i=0;i<=arrayPizzasResumen.size()-1;i++){
             acumulapizzas=acumulapizzas + arrayPizzasResumen.get(i)+"\n";

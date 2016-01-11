@@ -17,9 +17,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by adminportatil on 10/12/2015.
- */
 public class DatosPedido extends AppCompatActivity {
     private TabHost TbH;
     private Spinner tip,tam;
@@ -31,16 +28,15 @@ public class DatosPedido extends AppCompatActivity {
     private double[] preciosbebida= {1.99,1.05,1.5,1.35,1,1.25};
     private int posispinner=0;
     private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical,botonCocaCola,botonLimon,botonNaranja,botonNestea,botonCerveza,botonAgua;
-
     private TextView textoCarbonara,textoBarbacoa,texto4Quesos,textoVegetal,textoTropical;
     ArrayList<String> arrayPizzas = new ArrayList<String> ();
     private String tamañoPizza,tipoMasa;
-
     private TextView textoCocaCola,textoLimon,textoNestea,textoNaranja,textoCerveza,textoAgua;
     ArrayList<String> arrayBebidas = new ArrayList<String> ();
-
+    Integer acumulaprecios;
     //variables para recoger los datos del cliente
     String n,d,t;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,6 +208,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantCar.getText().toString()+", "+textoCarbonara.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciocarbo.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(preciocarbo.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -221,6 +218,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantBar.getText().toString() + ", " + textoBarbacoa.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciobar.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(preciobar.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -230,6 +228,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantQue.getText().toString() + ", " + texto4Quesos.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + precioque.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(precioque.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -239,6 +238,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantVe.getText().toString() +", "+textoVegetal.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciove.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(preciove.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -248,6 +248,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantTro.getText().toString() + ", " + textoTropical.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciotro.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(preciotro.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -351,6 +352,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantCo.getText().toString()+", "+textoCocaCola.getText().toString()+", "+preciococacola.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(preciococacola.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -360,6 +362,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantLi.getText().toString()+", "+textoLimon.getText().toString()+", "+preciolimon.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(preciolimon.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -369,6 +372,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantNa.getText().toString()+", "+textoNaranja.getText().toString()+", "+precionaranja.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(precionaranja.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -378,6 +382,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantNes.getText().toString()+", "+textoNestea.getText().toString()+", "+precionestea.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(precionestea.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -387,6 +392,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantCer.getText().toString()+", "+textoCerveza.getText().toString()+", "+preciocerveza.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(preciocerveza.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -396,6 +402,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayBebidas.add(cantAgua.getText().toString()+", "+textoAgua.getText().toString()+", "+precioagua.getText().toString());
+                acumulaprecios=acumulaprecios+Integer.parseInt(precioagua.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -493,6 +500,7 @@ public class DatosPedido extends AppCompatActivity {
         i.putExtra("telefono", t);
         i.putExtra("ap",arrayPizzas);
         i.putExtra("ab",arrayBebidas);
+        i.putExtra("acumprecios",acumulaprecios);
         startActivity(i);
     }
 
