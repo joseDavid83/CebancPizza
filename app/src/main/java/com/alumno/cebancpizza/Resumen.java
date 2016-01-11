@@ -1,5 +1,6 @@
 package com.alumno.cebancpizza;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -46,7 +47,7 @@ public class Resumen extends AppCompatActivity {
 
         totalprecio=getIntent().getDoubleExtra("acumprecios",totalprecio);
 
-        preciototal.setText("El precio total es: "+totalprecio);
+        preciototal.setText("El precio total es: "+totalprecio+" €");
 
         for(int i=0;i<=arrayPizzasResumen.size()-1;i++){
             acumulapizzas=acumulapizzas + arrayPizzasResumen.get(i)+"\n";
@@ -58,12 +59,15 @@ public class Resumen extends AppCompatActivity {
         }
         bebidas.setText(acumulabebidas);
 
+        imagenpeluche.setVisibility(View.INVISIBLE);
+
         if (totalprecio>=20) {
-            peluche.setText("Has ganado un peluche por realizar un pedido superior a 20€.");
+            peluche.setText("Has ganado un peluche por realizar un pedido superior a 20 €.");
+            imagenpeluche.setVisibility(View.VISIBLE);
         }
         if(totalprecio>=33) {
             vale.setText("Has ganado un vale para comer en el comedor de Cebanc por realizar un pedido superior a 33€.");
-            imagenpeluche.setVisibility(View.VISIBLE);
+
         }
 
         botonAceptar.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +76,10 @@ public class Resumen extends AppCompatActivity {
                 Toast toast1 = Toast.makeText(getApplicationContext(), "PEDIDO ENVIADO. Saliendo de la aplicación...", Toast.LENGTH_SHORT);
                 toast1.show();
                 finish();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
 
@@ -81,6 +89,10 @@ public class Resumen extends AppCompatActivity {
                 Toast toast1 = Toast.makeText(getApplicationContext(), "PEDIDO CANCELADO. Saliendo de la aplicación...", Toast.LENGTH_SHORT);
                 toast1.show();
                 finish();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }

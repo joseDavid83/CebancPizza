@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f3eded">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -11,773 +12,968 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
-            <TabHost
-                android:layout_width="match_parent"
+            <HorizontalScrollView
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tabHost">
+                android:id="@+id/horizontalScrollView" >
 
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
-                    <TabWidget
-                        android:id="@android:id/tabs"
+                    <TabHost
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></TabWidget>
-
-                    <FrameLayout
-                        android:id="@android:id/tabcontent"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tabHost">
 
                         <LinearLayout
-                            android:id="@+id/tab1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
-                            <LinearLayout
+                            <TabWidget
+                                android:id="@android:id/tabs"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center">
+                                android:layout_height="wrap_content"></TabWidget>
+
+                            <FrameLayout
+                                android:id="@android:id/tabcontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
 
                                 <LinearLayout
-                                    android:orientation="vertical"
+                                    android:id="@+id/tab1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginRight="50dp">
+                                    android:orientation="vertical">
 
-                                    <TextView
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:padding="5dp"
+                                        android:background="#dfdcdc">
+
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_horizontal"
+                                            android:layout_marginRight="50dp">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="Tipo de masa"
+                                                android:id="@+id/txtTipo" />
+
+                                            <Spinner
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/cmbTipo" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="Tamaño"
+                                                android:id="@+id/txtTamaño" />
+
+                                            <Spinner
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/cmbTamaño" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <TableLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textAppearance="?android:attr/textAppearanceMedium"
-                                        android:text="Tipo de masa"
-                                        android:id="@+id/txtTipo" />
+                                        android:layout_marginTop="10dp">
 
-                                    <Spinner
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/cmbTipo" />
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="15dp"
+                                                android:background="#8ec3e2"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Carbonara"
+                                                    android:id="@+id/txtCarbonara"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgCarbonara"
+                                                    android:src="@mipmap/carbonara" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView10"
+                                                        android:textSize="15dp" />
+
+                                                    <EditText
+                                                        android:layout_width="35dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantCarbo"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioCarbonara"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:id="@+id/textView2"
+                                                        android:text=" €" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnCarbonara"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="15dp"
+                                                android:background="#8ec3e2"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Barbacoa"
+                                                    android:id="@+id/txtBarbacoa"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgBarbacoa"
+                                                    android:src="@mipmap/barbacoa" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView11" />
+
+                                                    <EditText
+                                                        android:layout_width="35dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantBar"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioBarbacoa"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView3" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnBarbacoa"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="#8ec3e2"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="4 quesos"
+                                                    android:id="@+id/txt4Quesos"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgQuesos"
+                                                    android:src="@mipmap/quesos" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView12" />
+
+                                                    <EditText
+                                                        android:layout_width="35dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantQuesos"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioQuesos"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView4" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btn4Quesos"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="10dp">
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="5dp"
+                                                android:layout_marginRight="10dp"
+                                                android:background="#8ec3e2">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Vegetal"
+                                                    android:id="@+id/txtVegetal"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgVegetal"
+                                                    android:src="@mipmap/vegetal" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView13" />
+
+                                                    <EditText
+                                                        android:layout_width="35dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantVegetal"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioVegetal"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView5" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnVegetal"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="#8ec3e2"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Tropical"
+                                                    android:id="@+id/txtTropical"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgTropical"
+                                                    android:src="@mipmap/tropical" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView14" />
+
+                                                    <EditText
+                                                        android:layout_width="35dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantTropical"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioTropical"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView6" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnTropical"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+                                        </TableRow>
+
+                                    </TableLayout>
                                 </LinearLayout>
 
                                 <LinearLayout
-                                    android:orientation="vertical"
+                                    android:id="@+id/tab2"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="match_parent">
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
+                                    <TableLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:textAppearance="?android:attr/textAppearanceMedium"
-                                        android:text="Tamaño"
-                                        android:id="@+id/txtTamaño" />
+                                        android:layout_marginTop="10dp">
 
-                                    <Spinner
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/cmbTamaño" />
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="#8ec3e2"
+                                                android:layout_marginRight="15dp"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Coca-cola"
+                                                    android:id="@+id/txtCocaCola"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgCocaCola"
+                                                    android:src="@mipmap/cocacola" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView15"
+                                                        android:textSize="15dp" />
+
+                                                    <EditText
+                                                        android:layout_width="45dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantCocaCola"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioCocaCola"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView7" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnCocaCola"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="15dp"
+                                                android:background="#8ec3e2"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Limón"
+                                                    android:id="@+id/txtLimon"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgLimon"
+                                                    android:src="@mipmap/limon" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView16"
+                                                        android:textSize="15dp" />
+
+                                                    <EditText
+                                                        android:layout_width="45dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantLimon"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioLimon"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView8" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnLimon"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="#8ec3e2"
+                                                android:layout_marginRight="15dp"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Naranja"
+                                                    android:id="@+id/txtNaranja"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgNaranja"
+                                                    android:src="@mipmap/naranja" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView17"
+                                                        android:textSize="15dp" />
+
+                                                    <EditText
+                                                        android:layout_width="45dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantNaranja"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioNaranja"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView9" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnNaranja"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="10dp">
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:padding="5dp"
+                                                android:background="#8ec3e2"
+                                                android:layout_marginRight="15dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Nestea"
+                                                    android:id="@+id/txtNestea"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgNestea"
+                                                    android:src="@mipmap/nestea" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView19"
+                                                        android:textSize="15dp" />
+
+                                                    <EditText
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantNestea"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioNestea"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView18" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Añadir"
+                                                    android:id="@+id/btnNestea" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="15dp"
+                                                android:background="#8ec3e2"
+                                                android:padding="5dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Cerveza"
+                                                    android:id="@+id/txtCerveza"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgCerveza"
+                                                    android:src="@mipmap/cerveza" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView22"
+                                                        android:textSize="15dp" />
+
+                                                    <EditText
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantCerveza"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioCerveza"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView20" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnCerveza"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:orientation="vertical"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:padding="5dp"
+                                                android:background="#8ec3e2"
+                                                android:layout_marginRight="15dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                                    android:text="Agua"
+                                                    android:id="@+id/txtAgua"
+                                                    android:textSize="15dp" />
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:id="@+id/imgAgua"
+                                                    android:src="@mipmap/agua" />
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:text="@string/cantidad"
+                                                        android:id="@+id/textView23"
+                                                        android:textSize="15dp" />
+
+                                                    <EditText
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="number"
+                                                        android:ems="10"
+                                                        android:id="@+id/txtCantAgua"
+                                                        android:text="1"
+                                                        android:textSize="15dp" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                                        android:id="@+id/lblPrecioAgua"
+                                                        android:textSize="15dp" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                                        android:text=" €"
+                                                        android:id="@+id/textView21" />
+                                                </LinearLayout>
+
+                                                <Button
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/añadir"
+                                                    android:id="@+id/btnAgua"
+                                                    android:textSize="15dp" />
+
+                                            </LinearLayout>
+                                        </TableRow>
+                                    </TableLayout>
                                 </LinearLayout>
 
-                            </LinearLayout>
 
-                            <TableLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            </FrameLayout>
 
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
+                            <Button
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Siguiente"
+                                android:id="@+id/btnSiguiente2"
+                                android:textSize="15dp" />
 
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Carbonara"
-                                            android:id="@+id/txtCarbonara"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgCarbonara"
-                                            android:src="@mipmap/carbonara" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView10"
-                                                android:textSize="15dp" />
-
-                                            <EditText
-                                                android:layout_width="35dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantCarbo"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioCarbonara"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnCarbonara"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Barbacoa"
-                                            android:id="@+id/txtBarbacoa"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgBarbacoa"
-                                            android:src="@mipmap/barbacoa" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView11" />
-
-                                            <EditText
-                                                android:layout_width="35dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantBar"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioBarbacoa"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnBarbacoa"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="4 quesos"
-                                            android:id="@+id/txt4Quesos"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgQuesos"
-                                            android:src="@mipmap/quesos" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView12" />
-
-                                            <EditText
-                                                android:layout_width="35dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantQuesos"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioQuesos"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btn4Quesos"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-                                </TableRow>
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Vegetal"
-                                            android:id="@+id/txtVegetal"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgVegetal"
-                                            android:src="@mipmap/vegetal" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView13" />
-
-                                            <EditText
-                                                android:layout_width="35dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantVegetal"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioVegetal"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnVegetal"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Tropical"
-                                            android:id="@+id/txtTropical"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgTropical"
-                                            android:src="@mipmap/tropical" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView14" />
-
-                                            <EditText
-                                                android:layout_width="35dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantTropical"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioTropical"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnTropical"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-                                </TableRow>
-
-                            </TableLayout>
+                            <Button
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Salir"
+                                android:id="@+id/btnSalir2"
+                                android:textSize="15dp" />
                         </LinearLayout>
+                    </TabHost>
 
-                        <LinearLayout
-                            android:id="@+id/tab2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TableLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Coca-cola"
-                                            android:id="@+id/txtCocaCola"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgCocaCola"
-                                            android:src="@mipmap/cocacola" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView15"
-                                                android:textSize="15dp" />
-
-                                            <EditText
-                                                android:layout_width="45dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantCocaCola"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioCocaCola"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnCocaCola"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Limón"
-                                            android:id="@+id/txtLimon"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgLimon"
-                                            android:src="@mipmap/limon" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView16"
-                                                android:textSize="15dp" />
-
-                                            <EditText
-                                                android:layout_width="45dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantLimon"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioLimon"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnLimon"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Naranja"
-                                            android:id="@+id/txtNaranja"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgNaranja"
-                                            android:src="@mipmap/naranja" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView17"
-                                                android:textSize="15dp" />
-
-                                            <EditText
-                                                android:layout_width="45dp"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantNaranja"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioNaranja"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnNaranja"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-                                </TableRow>
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Nestea"
-                                            android:id="@+id/txtNestea"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgNestea"
-                                            android:src="@mipmap/nestea" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView19"
-                                                android:textSize="15dp" />
-
-                                            <EditText
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantNestea"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioNestea"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Añadir"
-                                            android:id="@+id/btnNestea" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Cerveza"
-                                            android:id="@+id/txtCerveza"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgCerveza"
-                                            android:src="@mipmap/cerveza" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView22"
-                                                android:textSize="15dp" />
-
-                                            <EditText
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantCerveza"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioCerveza"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnCerveza"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:orientation="vertical"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="Agua"
-                                            android:id="@+id/txtAgua"
-                                            android:textSize="15dp" />
-
-                                        <ImageView
-                                            android:layout_width="80dp"
-                                            android:layout_height="80dp"
-                                            android:id="@+id/imgAgua"
-                                            android:src="@mipmap/agua" />
-
-                                        <LinearLayout
-                                            android:orientation="horizontal"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:text="@string/cantidad"
-                                                android:id="@+id/textView23"
-                                                android:textSize="15dp" />
-
-                                            <EditText
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:inputType="number"
-                                                android:ems="10"
-                                                android:id="@+id/txtCantAgua"
-                                                android:text="1"
-                                                android:textSize="15dp" />
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/lblPrecioAgua"
-                                            android:textSize="15dp" />
-
-                                        <Button
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/añadir"
-                                            android:id="@+id/btnAgua"
-                                            android:textSize="15dp" />
-
-                                    </LinearLayout>
-                                </TableRow>
-                            </TableLayout>
-                        </LinearLayout>
-
-
-                    </FrameLayout>
                 </LinearLayout>
-            </TabHost>
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Siguiente"
-                android:id="@+id/btnSiguiente2"
-                android:textSize="15dp" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Salir"
-                android:id="@+id/btnSalir2"
-                android:textSize="15dp" />
+            </HorizontalScrollView>
 
         </LinearLayout>
     </ScrollView>

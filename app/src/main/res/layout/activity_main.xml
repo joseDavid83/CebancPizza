@@ -8,22 +8,34 @@
     android:orientation="vertical"
     android:background="@mipmap/imagenfondotitulo">
 
-    <Button
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:id="@+id/btnEntrar"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:textSize="30dp" />
+        android:id="@+id/scrollView2" >
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Salir"
-        android:id="@+id/btnSalir"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="350dp"
-        android:textSize="30dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Entrar"
+                android:id="@+id/btnEntrar"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:textSize="30dp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Salir"
+                android:id="@+id/btnSalir"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="350dp"
+                android:textSize="30dp" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
