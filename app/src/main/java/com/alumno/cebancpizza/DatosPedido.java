@@ -3,6 +3,8 @@ package com.alumno.cebancpizza;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -25,7 +27,7 @@ public class DatosPedido extends AppCompatActivity {
     private EditText cantCar,cantBar,cantQue,cantVe,cantTro,cantCo,cantLi,cantNa,cantNes,cantCer,cantAgua;
     int tampizza=3,tipopizza=5;
     private double[][] preciospizza = new double[tampizza][tipopizza];
-    private double[] preciosbebida= {1.99,1.05,1.5,1.35,1,1.25};
+    private double[] preciosbebida= {1.99,1,1.5,1.5,1,1.25};
     private int posispinner=0;
     private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical,botonCocaCola,botonLimon,botonNaranja,botonNestea,botonCerveza,botonAgua;
     private TextView textoCarbonara,textoBarbacoa,texto4Quesos,textoVegetal,textoTropical;
@@ -150,9 +152,6 @@ public class DatosPedido extends AppCompatActivity {
         tip.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //lblMensaje.setText("Seleccionado:" +parent.getItemAtPosition(position));
-                //Podemos recuperar el ítem seleccionado usando
-                //parent.getItemAtPosition(position)
                 if (position == 0) {
                     tipoMasa = "Masa fina";
 
@@ -173,9 +172,6 @@ public class DatosPedido extends AppCompatActivity {
         tam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //lblMensaje.setText("Seleccionado:" +parent.getItemAtPosition(position));
-                //Podemos recuperar el ítem seleccionado usando
-                //parent.getItemAtPosition(position)
                 posispinner=position;
                 if(position==0){
                     preciocarbo.setText(""+Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]);
@@ -192,11 +188,11 @@ public class DatosPedido extends AppCompatActivity {
                     preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]);
                     tamañoPizza="Mediana";
                 }else{
-                    preciocarbo.setText("Precio: "+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]);
-                    preciobar.setText("Precio: "+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
-                    precioque.setText("Precio: "+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
-                    preciove.setText("Precio: "+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
-                    preciotro.setText("Precio: "+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]);
+                    preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]);
+                    preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
+                    precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
+                    preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
+                    preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]);
                     tamañoPizza="Familiar";
                 }
                 preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] );
@@ -231,7 +227,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantBar.getText().toString() + ", " + textoBarbacoa.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciobar.getText().toString());
-                acumulaprecios=acumulaprecios+Double.parseDouble(preciobar.getText().toString());
+                acumulaprecios = acumulaprecios + Double.parseDouble(preciobar.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -241,7 +237,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantQue.getText().toString() + ", " + texto4Quesos.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + precioque.getText().toString());
-                acumulaprecios=acumulaprecios+Double.parseDouble(precioque.getText().toString());
+                acumulaprecios = acumulaprecios + Double.parseDouble(precioque.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -250,8 +246,8 @@ public class DatosPedido extends AppCompatActivity {
         botonVegetal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantVe.getText().toString() +", "+textoVegetal.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciove.getText().toString());
-                acumulaprecios=acumulaprecios+Double.parseDouble(preciove.getText().toString());
+                arrayPizzas.add(cantVe.getText().toString() + ", " + textoVegetal.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciove.getText().toString());
+                acumulaprecios = acumulaprecios + Double.parseDouble(preciove.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -261,7 +257,7 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 arrayPizzas.add(cantTro.getText().toString() + ", " + textoTropical.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciotro.getText().toString());
-                acumulaprecios=acumulaprecios+Double.parseDouble(preciotro.getText().toString());
+                acumulaprecios = acumulaprecios + Double.parseDouble(preciotro.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -269,12 +265,15 @@ public class DatosPedido extends AppCompatActivity {
 
         //Ahora cuando cambia la cantidad cambia el precio
 
-        cantCar.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantCar.getText().toString());
+        cantCar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantCar.getText().toString().equals("")) {
                     if (posispinner==0){
                         preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]);
                     }else if(posispinner==1){
@@ -283,79 +282,111 @@ public class DatosPedido extends AppCompatActivity {
                         preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]);
                     }
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        cantBar.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantBar.getText().toString());
-                    if (posispinner==0){
-                        preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]);
-                    }else if(posispinner==1){
-                        preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]);
-                    }else{
-                        preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
-                    }
-                }
-                return false;
-            }
-        });
+        cantBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        cantQue.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantQue.getText().toString());
-                    if (posispinner==0){
-                        precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]);
-                    }else if(posispinner==1){
-                        precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]);
-                    }else{
-                        precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
-                    }
-                }
-                return false;
             }
-        });
 
-        cantVe.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantVe.getText().toString());
-                    if (posispinner==0){
-                        preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]);
-                    }else if(posispinner==1){
-                        preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]);
-                    }else{
-                        preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
-                    }
-                }
-                return false;
-            }
-        });
-
-        cantTro.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantTro.getText().toString());
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantBar.getText().toString().equals("")) {
                     if (posispinner == 0) {
-                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4] );
+                        preciobar.setText("" + Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]);
+                    } else if (posispinner == 1) {
+                        preciobar.setText("" + Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]);
+                    } else {
+                        preciobar.setText("" + Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        cantQue.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantQue.getText().toString().equals("")) {
+                    if (posispinner == 0) {
+                        precioque.setText("" + Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]);
+                    } else if (posispinner == 1) {
+                        precioque.setText("" + Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]);
+                    } else {
+                        precioque.setText("" + Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        cantVe.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantVe.getText().toString().equals("")) {
+                    if (posispinner == 0) {
+                        preciove.setText("" + Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]);
+                    } else if (posispinner == 1) {
+                        preciove.setText("" + Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]);
+                    } else {
+                        preciove.setText("" + Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        cantTro.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantTro.getText().toString().equals("")) {
+                    if (posispinner == 0) {
+                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]);
                     } else if (posispinner == 1) {
                         preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]);
                     } else {
                         preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]);
                     }
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
@@ -414,94 +445,123 @@ public class DatosPedido extends AppCompatActivity {
         botonAgua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayBebidas.add(cantAgua.getText().toString()+", "+textoAgua.getText().toString()+", "+precioagua.getText().toString());
-                acumulaprecios=acumulaprecios+Double.parseDouble(precioagua.getText().toString());
+                arrayBebidas.add(cantAgua.getText().toString() + ", " + textoAgua.getText().toString() + ", " + precioagua.getText().toString());
+                acumulaprecios = acumulaprecios + Double.parseDouble(precioagua.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
         });
 
-        cantCo.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantCo.getText().toString());
+        cantCo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    preciococacola.setText(""+Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0]);
-
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!cantCo.getText().toString().equals("")) {
+                    preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0]);
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        cantLi.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantLi.getText().toString());
+        cantLi.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    preciolimon.setText(""+ Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]);
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantLi.getText().toString().equals("")) {
+                    preciolimon.setText("" + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]);
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        cantNa.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantNa.getText().toString());
+        cantNa.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    precionaranja.setText(""+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantNa.getText().toString().equals("")) {
+                    precionaranja.setText("" + Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        cantNes.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantNes.getText().toString());
+        cantNes.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    precionestea.setText(""+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantNes.getText().toString().equals("")) {
+                    precionestea.setText("" + Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        cantCer.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantCer.getText().toString());
+        cantCer.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    preciocerveza.setText(""+ Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]);
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantCer.getText().toString().equals("")) {
+                    preciocerveza.setText("" + Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]);
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        cantAgua.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Se captura el texto al pulsar enter
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    EditText et = (EditText) v;
-                    Log.e("Info", cantAgua.getText().toString());
+        cantAgua.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    precioagua.setText(""+ Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]);
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!cantAgua.getText().toString().equals("")) {
+                    precioagua.setText("" + Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]);
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
@@ -519,19 +579,19 @@ public class DatosPedido extends AppCompatActivity {
 
     public void rellenarArray(double[][] array){
         //
-        array[0][0]=8.95;
+        array[0][0]=8.5;
         array[0][1]=9.99;
         array[0][2]=9.5;
         array[0][3]=8.5;
         array[0][4]=10.5;
 
-        array[1][0]=13.95;
+        array[1][0]=13.5;
         array[1][1]=12.99;
         array[1][2]=13.5;
         array[1][3]=14.5;
         array[1][4]=15.5;
 
-        array[2][0]=16.95;
+        array[2][0]=16.5;
         array[2][1]=17.99;
         array[2][2]=16.5;
         array[2][3]=17.5;

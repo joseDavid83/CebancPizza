@@ -32,7 +32,8 @@
                 android:id="@+id/lblNombre"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:background="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +42,8 @@
                 android:id="@+id/lblDireccion"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:background="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +52,8 @@
                 android:id="@+id/lblTelefono"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:background="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,7 +62,8 @@
                 android:layout_marginTop="20dp"
                 android:textColor="#ffffff"
                 android:textSize="15dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:background="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +71,8 @@
                 android:id="@+id/lblBebidas"
                 android:textColor="#ffffff"
                 android:textSize="15dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:background="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,7 +80,8 @@
                 android:id="@+id/lblTotalPrecio"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,7 +89,8 @@
                 android:id="@+id/lblPeluche"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#000000" />
 
             <ImageView
                 android:layout_width="100dp"
@@ -97,7 +104,8 @@
                 android:id="@+id/lblVale"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#000000" />
 
             <Button
                 android:layout_width="fill_parent"
@@ -106,7 +114,7 @@
                 android:id="@+id/btnAceptar"
                 android:layout_gravity="center_horizontal"
                 android:textSize="20dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp" />
 
             <Button
                 android:layout_width="fill_parent"
