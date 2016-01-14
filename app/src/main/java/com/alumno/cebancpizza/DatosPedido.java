@@ -27,7 +27,7 @@ public class DatosPedido extends AppCompatActivity {
     private EditText cantCar,cantBar,cantQue,cantVe,cantTro,cantCo,cantLi,cantNa,cantNes,cantCer,cantAgua;
     int tampizza=3,tipopizza=5;
     private double[][] preciospizza = new double[tampizza][tipopizza];
-    private double[] preciosbebida= {1.99,1,1.5,1.5,1,1.25};
+    private double[] preciosbebida= {1.99,1,1.5,1.5,1,1.25}; //array con los precios de las bebidas
     private int posispinner=0;
     private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical,botonCocaCola,botonLimon,botonNaranja,botonNestea,botonCerveza,botonAgua;
     private TextView textoCarbonara,textoBarbacoa,texto4Quesos,textoVegetal,textoTropical;
@@ -98,29 +98,29 @@ public class DatosPedido extends AppCompatActivity {
         n=getIntent().getStringExtra("nombre");
         d=getIntent().getStringExtra("direccion");
         t=getIntent().getStringExtra("telefono");
-
+        //llamada al método para meter los precios de las pizzas escogidas en el array
         rellenarArray(preciospizza);
-
+        //listener del botón siguiente
         sig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 lanzarResumen();
             }
         });
-
+        //listener del botón salir
         sal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                finish();    //instrucciones para salir de la aplicación
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
-
+        //instrucciones para añadir pestañas al layout
         TbH = (TabHost) findViewById(R.id.tabHost); //llamamos al Tabhost
-        TbH.setup();                                                         //lo activamos
+        TbH.setup();                 //lo activamos
 
         TabHost.TabSpec tab1 = TbH.newTabSpec("tab1");  //aspectos de cada Tab (pestaña)
         TabHost.TabSpec tab2 = TbH.newTabSpec("tab2");
@@ -136,8 +136,7 @@ public class DatosPedido extends AppCompatActivity {
 
         tip=(Spinner)findViewById(R.id.cmbTipo);
         tam=(Spinner)findViewById(R.id.cmbTamaño);
-
-
+        //adaptador de los spinners
         ArrayAdapter<CharSequence> adaptadortip = ArrayAdapter.createFromResource(this,R.array.tipo_pizza, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adaptadortam = ArrayAdapter.createFromResource(this,R.array.tamaño_pizza, android.R.layout.simple_spinner_item);
 
@@ -147,12 +146,11 @@ public class DatosPedido extends AppCompatActivity {
         tip.setAdapter(adaptadortip);
         tam.setAdapter(adaptadortam);
 
-        //Esto es el spinner del tipo de massa
-
+        //Esto es el spinner del tipo de masa
         tip.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
+                if (position == 0) { //variables para recoger el tipo de masa escogida
                     tipoMasa = "Masa fina";
 
                 } else if (position == 1) {
@@ -167,8 +165,7 @@ public class DatosPedido extends AppCompatActivity {
         });
 
         //Este es el spinner del tamaño de la pizza
-        //Segun el tamaño cambia el precio
-
+        //Según el tamaño cambia el precio
         tam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -565,7 +562,7 @@ public class DatosPedido extends AppCompatActivity {
             }
         });
     }
-
+    //método para lanzar la siguiente actividad y mandarle los datos
     public void lanzarResumen(){
         Intent i=new Intent(this, Resumen.class);
         i.putExtra("nombre", n);
@@ -576,7 +573,7 @@ public class DatosPedido extends AppCompatActivity {
         i.putExtra("acumprecios",acumulaprecios);
         startActivity(i);
     }
-
+    //método para meter en un array los precios de las pizzas
     public void rellenarArray(double[][] array){
         //
         array[0][0]=8.5;

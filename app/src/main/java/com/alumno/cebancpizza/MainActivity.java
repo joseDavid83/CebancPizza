@@ -17,19 +17,22 @@ public class MainActivity extends AppCompatActivity {
         entrar=(Button)findViewById(R.id.btnEntrar);
         salir=(Button)findViewById(R.id.btnSalir);
 
+        //listener del botón entrar
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lanzarDatosClientes();
+                lanzarDatosClientes(); //llamada al método para lanzar la siguiente actividad
             }
         });
+        //listener del botón salir
         salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                finish();  //método para salir de la aplicación
             }
         });
     }
+    //método para lanzar la siguiente actividad
     public void lanzarDatosClientes(){
         Intent i=new Intent(this, DatosCliente.class);
         startActivity(i);

@@ -26,8 +26,7 @@ public class DatosCliente extends AppCompatActivity{
         direccion=(EditText)findViewById(R.id.txtDireccion);
         telefono=(EditText)findViewById(R.id.txtTelefono);
 
-
-
+        //listener del botón siguiente
         sig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +34,7 @@ public class DatosCliente extends AppCompatActivity{
                 lanzarDatosPedido(comprobar);
             }
         });
-
+        //listener del botón salir
         sal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,11 +42,11 @@ public class DatosCliente extends AppCompatActivity{
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                startActivity(intent);      //instrucciones para salir de la aplicación
             }
         });
     }
-
+    //método para lanzar la siguiente actividad y mandarle los datos
     public void lanzarDatosPedido(boolean c){
         if(c){
             Intent i=new Intent(this, DatosPedido.class);
@@ -57,19 +56,26 @@ public class DatosCliente extends AppCompatActivity{
             startActivity(i);
         }
     }
-
+    //método para comprobar que los editText tengan algo escrito y recoger los datos del cliente
     public boolean datos(){
-        boolean lleno;
-        if(nombre.getText().toString().equals("")){
-            Toast.makeText(this, "Falta introducir el nombre", Toast.LENGTH_SHORT).show();
+        boolean lleno=false;
+        if(nombre.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")){
+            Toast.makeText(this, "Falta introducir los datos", Toast.LENGTH_SHORT).show();
             lleno=false;
-        } else if(direccion.getText().toString().equals("")){
-            Toast.makeText(this, "Falta introducir la dirección", Toast.LENGTH_SHORT).show();
-            lleno=false;
-        } else if(telefono.getText().toString().equals("")){
-            Toast.makeText(this, "Falta introducir el número de teléfono", Toast.LENGTH_SHORT).show();
-            lleno=false;
-        } else{
+        }else if(nombre.getText().toString().equals("") || direccion.getText().toString().equals("") || telefono.getText().toString().equals("")) {
+            if (nombre.getText().toString().equals("")) {
+                Toast.makeText(this, "Falta introducir el nombre", Toast.LENGTH_SHORT).show();
+                lleno = false;
+            }
+            if (direccion.getText().toString().equals("")) {
+                Toast.makeText(this, "Falta introducir la dirección", Toast.LENGTH_SHORT).show();
+                lleno = false;
+            }
+            if (telefono.getText().toString().equals("")) {
+                Toast.makeText(this, "Falta introducir el número de teléfono", Toast.LENGTH_SHORT).show();
+                lleno = false;
+            }
+        }else{
             nomb=nombre.getText().toString();
             direc=direccion.getText().toString();
             tel=telefono.getText().toString();

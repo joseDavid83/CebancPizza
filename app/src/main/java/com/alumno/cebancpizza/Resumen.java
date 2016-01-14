@@ -38,27 +38,27 @@ public class Resumen extends AppCompatActivity {
         botonAceptar=(Button)findViewById(R.id.btnAceptar);
         botonCancelar=(Button)findViewById(R.id.btnCancelar);
 
+        //variables para recoger los datos mandados
         nombre2.setText("Nombre: "+getIntent().getStringExtra("nombre"));
         dire2.setText("Dirección: " + getIntent().getStringExtra("direccion"));
         telef2.setText("Teléfono: "+getIntent().getStringExtra("telefono"));
-
         arrayPizzasResumen=getIntent().getStringArrayListExtra("ap");
         arrayBebidasResumen=getIntent().getStringArrayListExtra("ab");
-
         totalprecio=getIntent().getDoubleExtra("acumprecios",totalprecio);
 
         preciototal.setText("El precio total es: "+totalprecio+" €");
-
+        //estructura repetitiva para organizar los datos recibidos de las pizzas
         for(int i=0;i<=arrayPizzasResumen.size()-1;i++){
             acumulapizzas=acumulapizzas + arrayPizzasResumen.get(i)+"\n";
         }
         pizzas.setText(acumulapizzas);
-
+        //estructura repetitiva para organizar los datos recibidos de las bebidas
         for(int i=0;i<=arrayBebidasResumen.size()-1;i++){
             acumulabebidas=acumulabebidas + arrayBebidasResumen.get(i)+"\n";
         }
         bebidas.setText(acumulabebidas);
 
+        //instrucciones para mostrar los premios conseguidos según el precio del pedido
         imagenpeluche.setVisibility(View.INVISIBLE);
 
         if (totalprecio>=20) {
@@ -69,7 +69,7 @@ public class Resumen extends AppCompatActivity {
             vale.setText("Has ganado un vale para comer en el comedor de Cebanc por realizar un pedido superior a 33€.");
 
         }
-
+        //listener del botón aceptar
         botonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +82,7 @@ public class Resumen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //listener del botón cancelar
         botonCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
