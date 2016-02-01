@@ -1,6 +1,7 @@
 package com.alumno.cebancpizza;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DbHelper helper=new DbHelper(this);
+        SQLiteDatabase db=helper.getWritableDatabase();
 
         entrar=(Button)findViewById(R.id.btnEntrar);
         salir=(Button)findViewById(R.id.btnSalir);

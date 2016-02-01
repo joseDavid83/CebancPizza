@@ -1,7 +1,10 @@
 package com.alumno.cebancpizza;
 
 import android.app.Application;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class DatosCliente extends AppCompatActivity{
-    private Button sig,sal;
+    private Button sig,sal,buscar;
     private EditText nombre,direccion,telefono;
     private String nomb,direc,tel;
     private boolean comprobar;
@@ -22,6 +25,7 @@ public class DatosCliente extends AppCompatActivity{
 
         sig=(Button)findViewById(R.id.btnSiguiente);
         sal=(Button)findViewById(R.id.btnSalir);
+        buscar=(Button)findViewById(R.id.btnBuscarCliente);
         nombre=(EditText)findViewById(R.id.txtNombre);
         direccion=(EditText)findViewById(R.id.txtDireccion);
         telefono=(EditText)findViewById(R.id.txtTelefono);
@@ -32,6 +36,7 @@ public class DatosCliente extends AppCompatActivity{
             public void onClick(View v) {
                 comprobar=datos();
                 lanzarDatosPedido(comprobar);
+                alta(v);
             }
         });
         //listener del botón salir
@@ -45,14 +50,21 @@ public class DatosCliente extends AppCompatActivity{
                 startActivity(intent);      //instrucciones para salir de la aplicación
             }
         });
+
+        buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                consultaporcodigo(v);
+            }
+        });
     }
     //método para lanzar la siguiente actividad y mandarle los datos
     public void lanzarDatosPedido(boolean c){
         if(c){
+
             Intent i=new Intent(this, DatosPedido.class);
-            i.putExtra("nombre", nomb);
-            i.putExtra("direccion", direc);
-            i.putExtra("telefono", tel);
+            Cliente cli=new Cliente(nomb,direc,tel);
+            i.putExtra("cliente", cli);
             startActivity(i);
         }
     }
@@ -84,7 +96,37 @@ public class DatosCliente extends AppCompatActivity{
         return lleno;
     }
 
+    public void consultaporcodigo(View v) {
+        DbHelper admin = new DbHelper(this);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        nomb = nombre.getText().toString();
+        Cursor fila = bd.rawQuery("select direccion, telefono from Clientes where nombre='"+ nomb +"'", null);
+        if (fila.moveToFirst()) {
+            direccion.setText(fila.getString(0));
+            telefono.setText(fila.getString(1));
+        } else {
+            Toast.makeText(this, "No existe el cliente. Rellene todos los datos y al darle a siguiente quedara registrado", Toast.LENGTH_SHORT).show();
+            direccion.setText("");
+            telefono.setText("");
+        }
+        bd.close();
+    }
 
-
-
+    public void alta(View v) {
+        DbHelper admin = new DbHelper(this);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        nomb= nombre.getText().toString();
+        direc = direccion.getText().toString();
+        tel = telefono.getText().toString();
+        ContentValues registro = new ContentValues();
+        registro.put("nombre", nomb);
+        registro.put("direccion", direc);
+        registro.put("telefono", tel);
+        bd.insert("clientes", null, registro);
+        bd.close();
+        nombre.setText("");
+        direccion.setText("");
+        telefono.setText("");
+        Toast.makeText(this, "Se cargaron los datos del cliente", Toast.LENGTH_SHORT).show();
+    }
 }

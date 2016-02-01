@@ -10,16 +10,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Resumen extends AppCompatActivity {
     private TextView nombre2,dire2,telef2,pizzas,bebidas,preciototal,peluche,vale;
-    ArrayList<String> arrayPizzasResumen = new ArrayList<String>();
+    ArrayList<Pizza> arrayPizzasResumen = new ArrayList<Pizza>();
     ArrayList<String> arrayBebidasResumen = new ArrayList<String>();
     private String acumulapizzas="",acumulabebidas="";
     private double totalprecio;
     private ImageView imagenpeluche;
     private Button botonAceptar,botonCancelar;
+    Cliente cli;
+    DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +42,20 @@ public class Resumen extends AppCompatActivity {
         botonCancelar=(Button)findViewById(R.id.btnCancelar);
 
         //variables para recoger los datos mandados
-        nombre2.setText("Nombre: "+getIntent().getStringExtra("nombre"));
-        dire2.setText("Dirección: " + getIntent().getStringExtra("direccion"));
-        telef2.setText("Teléfono: "+getIntent().getStringExtra("telefono"));
-        arrayPizzasResumen=getIntent().getStringArrayListExtra("ap");
+        cli =(Cliente)getIntent().getExtras().getSerializable("cliente");
+
+        nombre2.setText("Nombre: "+ cli.getNombre());
+        dire2.setText("Dirección: " + cli.getDireccion());
+        telef2.setText("Teléfono: "+ cli.getTelefono());
+        arrayPizzasResumen=(ArrayList<Pizza>)getIntent().getExtras().getSerializable("ap");
         arrayBebidasResumen=getIntent().getStringArrayListExtra("ab");
         totalprecio=getIntent().getDoubleExtra("acumprecios",totalprecio);
+        String tp=df.format(totalprecio);
 
-        preciototal.setText("El precio total es: "+totalprecio+" €");
+        preciototal.setText("El precio total es: "+tp+" €");
         //estructura repetitiva para organizar los datos recibidos de las pizzas
         for(int i=0;i<=arrayPizzasResumen.size()-1;i++){
-            acumulapizzas=acumulapizzas + arrayPizzasResumen.get(i)+"\n";
+            acumulapizzas=acumulapizzas + arrayPizzasResumen.get(i).getCantidad()+", "+arrayPizzasResumen.get(i).getNombre()+", "+arrayPizzasResumen.get(i).getTipo()+", "+arrayPizzasResumen.get(i).getTamaño()+", "+arrayPizzasResumen.get(i).calculaPrecioTotal()+" €"+"\n";
         }
         pizzas.setText(acumulapizzas);
         //estructura repetitiva para organizar los datos recibidos de las bebidas

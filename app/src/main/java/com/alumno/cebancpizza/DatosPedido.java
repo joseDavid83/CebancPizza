@@ -17,6 +17,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DatosPedido extends AppCompatActivity {
@@ -31,13 +32,18 @@ public class DatosPedido extends AppCompatActivity {
     private int posispinner=0;
     private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical,botonCocaCola,botonLimon,botonNaranja,botonNestea,botonCerveza,botonAgua;
     private TextView textoCarbonara,textoBarbacoa,texto4Quesos,textoVegetal,textoTropical;
-    ArrayList<String> arrayPizzas = new ArrayList<String> ();
+    ArrayList<Pizza> arrayPizzas = new ArrayList<Pizza> ();
     private String tamañoPizza,tipoMasa;
     private TextView textoCocaCola,textoLimon,textoNestea,textoNaranja,textoCerveza,textoAgua;
     ArrayList<String> arrayBebidas = new ArrayList<String> ();
     double acumulaprecios=0;
-    //variables para recoger los datos del cliente
-    String n,d,t;
+    Cliente cli;
+    Pizza carbo = new Pizza();
+    Pizza barba = new Pizza();
+    Pizza quesos = new Pizza();
+    Pizza vege = new Pizza();
+    Pizza tropi = new Pizza();
+    DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,12 +100,13 @@ public class DatosPedido extends AppCompatActivity {
         textoCerveza=(TextView)findViewById(R.id.txtCerveza);
         textoAgua=(TextView)findViewById(R.id.txtAgua);
 
+        tip=(Spinner)findViewById(R.id.cmbTipo);
+        tam=(Spinner)findViewById(R.id.cmbTamaño);
+
         //recogemos los datos del cliente de la actividad anterior
-        n=getIntent().getStringExtra("nombre");
-        d=getIntent().getStringExtra("direccion");
-        t=getIntent().getStringExtra("telefono");
-        //llamada al método para meter los precios de las pizzas escogidas en el array
-        rellenarArray(preciospizza);
+        cli = (Cliente)getIntent().getExtras().getSerializable("cliente");
+
+
         //listener del botón siguiente
         sig.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,8 +141,7 @@ public class DatosPedido extends AppCompatActivity {
         TbH.addTab(tab1); //añadimos los tabs ya programados
         TbH.addTab(tab2);
 
-        tip=(Spinner)findViewById(R.id.cmbTipo);
-        tam=(Spinner)findViewById(R.id.cmbTamaño);
+
         //adaptador de los spinners
         ArrayAdapter<CharSequence> adaptadortip = ArrayAdapter.createFromResource(this,R.array.tipo_pizza, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adaptadortam = ArrayAdapter.createFromResource(this,R.array.tamaño_pizza, android.R.layout.simple_spinner_item);
@@ -152,10 +158,15 @@ public class DatosPedido extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) { //variables para recoger el tipo de masa escogida
                     tipoMasa = "Masa fina";
-
                 } else if (position == 1) {
                     tipoMasa = "Masa normal";
                 }
+
+                carbo.setTipo(tipoMasa);
+                barba.setTipo(tipoMasa);
+                quesos.setTipo(tipoMasa);
+                vege.setTipo(tipoMasa);
+                tropi.setTipo(tipoMasa);
             }
 
             @Override
@@ -164,38 +175,36 @@ public class DatosPedido extends AppCompatActivity {
             }
         });
 
+
         //Este es el spinner del tamaño de la pizza
         //Según el tamaño cambia el precio
         tam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                posispinner=position;
-                if(position==0){
-                    preciocarbo.setText(""+Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]);
-                    preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]);
-                    precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]);
-                    preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]);
-                    preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]);
-                    tamañoPizza="Individual";
-                }else if(position==1) {
-                    preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]);
-                    preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]);
-                    precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]);
-                    preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]);
-                    preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]);
-                    tamañoPizza="Mediana";
-                }else{
-                    preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]);
-                    preciobar.setText(""+ Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
-                    precioque.setText(""+ Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
-                    preciove.setText(""+ Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
-                    preciotro.setText(""+ Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]);
-                    tamañoPizza="Familiar";
+                posispinner = position;
+                if (position == 0) {
+                    cantidadPerciosPizzaIndividual();
+                    imprimirPrecio();
+                    tamañoPizza = "Individual";
+                } else if (position == 1) {
+                    cantidadPerciosPizzaMediana();
+                    imprimirPrecio();
+                    tamañoPizza = "Mediana";
+                } else {
+                    cantidadPerciosPizzaFamiliar();
+                    imprimirPrecio();
+                    tamañoPizza = "Familiar";
                 }
-                preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0] );
-                preciolimon.setText("" + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1] );
-                precionaranja.setText(""+ Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
-                precionestea.setText(""+ Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
+                carbo.setTamaño(tamañoPizza);
+                barba.setTamaño(tamañoPizza);
+                quesos.setTamaño(tamañoPizza);
+                vege.setTamaño(tamañoPizza);
+                tropi.setTamaño(tamañoPizza);
+
+                preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0]);
+                preciolimon.setText("" + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]);
+                precionaranja.setText("" + Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
+                precionestea.setText("" + Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
                 preciocerveza.setText("" + Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]);
                 precioagua.setText("" + Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]);
             }
@@ -205,17 +214,16 @@ public class DatosPedido extends AppCompatActivity {
 
             }
         });
-        Log.e("info", "entra");
 
         //añadir a un arraylist las pizzas que elija el usuario
 
         botonCarbonara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantCar.getText().toString()+", "+textoCarbonara.getText().toString()+", "+tamañoPizza.toString()+", "+tipoMasa.toString()+", "+preciocarbo.getText().toString());
-                acumulaprecios=acumulaprecios+Double.parseDouble(preciocarbo.getText().toString());
-
-                Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
+                carbo.setNombre(textoCarbonara.getText().toString());
+                arrayPizzas.add(carbo);
+                acumulaprecios=acumulaprecios+carbo.calculaPrecioTotal();
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida ", Toast.LENGTH_SHORT);
                 toast1.show();
             }
         });
@@ -223,8 +231,9 @@ public class DatosPedido extends AppCompatActivity {
         botonBarbacoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantBar.getText().toString() + ", " + textoBarbacoa.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciobar.getText().toString());
-                acumulaprecios = acumulaprecios + Double.parseDouble(preciobar.getText().toString());
+                barba.setNombre(textoBarbacoa.getText().toString());
+                arrayPizzas.add(barba);
+                acumulaprecios = acumulaprecios + barba.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -233,8 +242,9 @@ public class DatosPedido extends AppCompatActivity {
         boton4Quesos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantQue.getText().toString() + ", " + texto4Quesos.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + precioque.getText().toString());
-                acumulaprecios = acumulaprecios + Double.parseDouble(precioque.getText().toString());
+                quesos.setNombre(texto4Quesos.getText().toString());
+                arrayPizzas.add(quesos);
+                acumulaprecios = acumulaprecios + quesos.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -243,8 +253,9 @@ public class DatosPedido extends AppCompatActivity {
         botonVegetal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantVe.getText().toString() + ", " + textoVegetal.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciove.getText().toString());
-                acumulaprecios = acumulaprecios + Double.parseDouble(preciove.getText().toString());
+                vege.setNombre(textoVegetal.getText().toString());
+                arrayPizzas.add(vege);
+                acumulaprecios = acumulaprecios + vege.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -253,8 +264,9 @@ public class DatosPedido extends AppCompatActivity {
         botonTropical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayPizzas.add(cantTro.getText().toString() + ", " + textoTropical.getText().toString() + ", " + tamañoPizza.toString() + ", " + tipoMasa.toString() + ", " + preciotro.getText().toString());
-                acumulaprecios = acumulaprecios + Double.parseDouble(preciotro.getText().toString());
+                tropi.setNombre(textoTropical.getText().toString());
+                arrayPizzas.add(tropi);
+                acumulaprecios = acumulaprecios + tropi.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
                 toast1.show();
             }
@@ -272,11 +284,14 @@ public class DatosPedido extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantCar.getText().toString().equals("")) {
                     if (posispinner==0){
-                        preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[0][0]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     }else if(posispinner==1){
-                        preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[1][0]);
+                        cantidadPerciosPizzaMediana();
+                        imprimirPrecio();
                     }else{
-                        preciocarbo.setText(""+ Double.parseDouble(cantCar.getText().toString()) * preciospizza[2][0]);
+                        cantidadPerciosPizzaFamiliar();
+                        imprimirPrecio();
                     }
                 }
             }
@@ -297,11 +312,14 @@ public class DatosPedido extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantBar.getText().toString().equals("")) {
                     if (posispinner == 0) {
-                        preciobar.setText("" + Double.parseDouble(cantBar.getText().toString()) * preciospizza[0][1]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else if (posispinner == 1) {
-                        preciobar.setText("" + Double.parseDouble(cantBar.getText().toString()) * preciospizza[1][1]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else {
-                        preciobar.setText("" + Double.parseDouble(cantBar.getText().toString()) * preciospizza[2][1]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     }
                 }
             }
@@ -322,11 +340,14 @@ public class DatosPedido extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantQue.getText().toString().equals("")) {
                     if (posispinner == 0) {
-                        precioque.setText("" + Double.parseDouble(cantQue.getText().toString()) * preciospizza[0][2]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else if (posispinner == 1) {
-                        precioque.setText("" + Double.parseDouble(cantQue.getText().toString()) * preciospizza[1][2]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else {
-                        precioque.setText("" + Double.parseDouble(cantQue.getText().toString()) * preciospizza[2][2]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     }
                 }
             }
@@ -347,11 +368,14 @@ public class DatosPedido extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantVe.getText().toString().equals("")) {
                     if (posispinner == 0) {
-                        preciove.setText("" + Double.parseDouble(cantVe.getText().toString()) * preciospizza[0][3]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else if (posispinner == 1) {
-                        preciove.setText("" + Double.parseDouble(cantVe.getText().toString()) * preciospizza[1][3]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else {
-                        preciove.setText("" + Double.parseDouble(cantVe.getText().toString()) * preciospizza[2][3]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     }
                 }
             }
@@ -372,11 +396,14 @@ public class DatosPedido extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantTro.getText().toString().equals("")) {
                     if (posispinner == 0) {
-                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[0][4]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else if (posispinner == 1) {
-                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[1][4]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     } else {
-                        preciotro.setText("" + Double.parseDouble(cantTro.getText().toString()) * preciospizza[2][4]);
+                        cantidadPerciosPizzaIndividual();
+                        imprimirPrecio();
                     }
                 }
             }
@@ -561,38 +588,76 @@ public class DatosPedido extends AppCompatActivity {
 
             }
         });
+
     }
     //método para lanzar la siguiente actividad y mandarle los datos
     public void lanzarResumen(){
         Intent i=new Intent(this, Resumen.class);
-        i.putExtra("nombre", n);
-        i.putExtra("direccion", d);
-        i.putExtra("telefono", t);
+        i.putExtra("cliente", cli);
         i.putExtra("ap",arrayPizzas);
         i.putExtra("ab",arrayBebidas);
         i.putExtra("acumprecios",acumulaprecios);
         startActivity(i);
     }
-    //método para meter en un array los precios de las pizzas
-    public void rellenarArray(double[][] array){
-        //
-        array[0][0]=8.5;
-        array[0][1]=9.99;
-        array[0][2]=9.5;
-        array[0][3]=8.5;
-        array[0][4]=10.5;
 
-        array[1][0]=13.5;
-        array[1][1]=12.99;
-        array[1][2]=13.5;
-        array[1][3]=14.5;
-        array[1][4]=15.5;
+    public void cantidadPerciosPizzaIndividual(){
+        carbo.setCantidad(Integer.parseInt(cantCar.getText().toString()));
+        barba.setCantidad(Integer.parseInt(cantBar.getText().toString()));
+        quesos.setCantidad(Integer.parseInt(cantQue.getText().toString()));
+        vege.setCantidad(Integer.parseInt(cantVe.getText().toString()));
+        tropi.setCantidad(Integer.parseInt(cantTro.getText().toString()));
 
-        array[2][0]=16.5;
-        array[2][1]=17.99;
-        array[2][2]=16.5;
-        array[2][3]=17.5;
-        array[2][4]=18.5;
+        carbo.setPrecio(8.5);
+        barba.setPrecio(9.99);
+        quesos.setPrecio(9.5);
+        vege.setPrecio(8.5);
+        tropi.setPrecio(10.5);
+    }
+
+    public void cantidadPerciosPizzaMediana(){
+        carbo.setCantidad(Integer.parseInt(cantCar.getText().toString()));
+        barba.setCantidad(Integer.parseInt(cantBar.getText().toString()));
+        quesos.setCantidad(Integer.parseInt(cantQue.getText().toString()));
+        vege.setCantidad(Integer.parseInt(cantVe.getText().toString()));
+        tropi.setCantidad(Integer.parseInt(cantTro.getText().toString()));
+
+        carbo.setPrecio(13.5);
+        barba.setPrecio(12.99);
+        quesos.setPrecio(13.5);
+        vege.setPrecio(14.5);
+        tropi.setPrecio(15.5);
+    }
+
+    public void cantidadPerciosPizzaFamiliar(){
+        carbo.setCantidad(Integer.parseInt(cantCar.getText().toString()));
+        barba.setCantidad(Integer.parseInt(cantBar.getText().toString()));
+        quesos.setCantidad(Integer.parseInt(cantQue.getText().toString()));
+        vege.setCantidad(Integer.parseInt(cantVe.getText().toString()));
+        tropi.setCantidad(Integer.parseInt(cantTro.getText().toString()));
+
+        carbo.setPrecio(16.5);
+        barba.setPrecio(18.99);
+        quesos.setPrecio(16.5);
+        vege.setPrecio(17.5);
+        tropi.setPrecio(18.5);
+
+    }
+
+    public void imprimirPrecio(){
+        String carboDosdecimales=df.format(carbo.calculaPrecioTotal());
+        preciocarbo.setText("" + carboDosdecimales );
+
+        String barbaDosdecimales=df.format(barba.calculaPrecioTotal());
+        preciobar.setText("" + barbaDosdecimales);
+
+        String quesosDosdecimales=df.format(quesos.calculaPrecioTotal());
+        precioque.setText("" + quesosDosdecimales);
+
+        String vegeDosdecimales=df.format(vege.calculaPrecioTotal());
+        preciove.setText("" + vegeDosdecimales);
+
+        String tropiDosdecimales=df.format(tropi.calculaPrecioTotal());
+        preciotro.setText("" + tropiDosdecimales);
     }
 
 }

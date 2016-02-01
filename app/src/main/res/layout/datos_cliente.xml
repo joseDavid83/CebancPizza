@@ -41,6 +41,12 @@
                 android:ems="10"
                 android:id="@+id/txtNombre" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar Cliente"
+                android:id="@+id/btnBuscarCliente" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
