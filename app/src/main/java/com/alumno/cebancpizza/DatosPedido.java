@@ -28,14 +28,12 @@ public class DatosPedido extends AppCompatActivity {
     private EditText cantCar,cantBar,cantQue,cantVe,cantTro,cantCo,cantLi,cantNa,cantNes,cantCer,cantAgua;
     int tampizza=3,tipopizza=5;
     private double[][] preciospizza = new double[tampizza][tipopizza];
-    private double[] preciosbebida= {1.99,1,1.5,1.5,1,1.25}; //array con los precios de las bebidas
     private int posispinner=0;
     private Button botonCarbonara,botonBarbacoa,boton4Quesos,botonVegetal, botonTropical,botonCocaCola,botonLimon,botonNaranja,botonNestea,botonCerveza,botonAgua;
     private TextView textoCarbonara,textoBarbacoa,texto4Quesos,textoVegetal,textoTropical;
     ArrayList<Pizza> arrayPizzas = new ArrayList<Pizza> ();
     private String tamañoPizza,tipoMasa;
-    private TextView textoCocaCola,textoLimon,textoNestea,textoNaranja,textoCerveza,textoAgua;
-    ArrayList<String> arrayBebidas = new ArrayList<String> ();
+    ArrayList<Bebida> arrayBebidas = new ArrayList<Bebida> ();
     double acumulaprecios=0;
     Cliente cli;
     Pizza carbo = new Pizza();
@@ -43,6 +41,13 @@ public class DatosPedido extends AppCompatActivity {
     Pizza quesos = new Pizza();
     Pizza vege = new Pizza();
     Pizza tropi = new Pizza();
+
+    Bebida coca=new Bebida("Coca-cola",1.99);
+    Bebida limon=new Bebida("Limon",1);
+    Bebida nara=new Bebida("Naranja",1.5);
+    Bebida nes=new Bebida("Nestea",1.5);
+    Bebida cerve=new Bebida("Cerveza",1);
+    Bebida agua=new Bebida("Agua",1.25);
     DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
@@ -93,12 +98,7 @@ public class DatosPedido extends AppCompatActivity {
         texto4Quesos=(TextView)findViewById(R.id.txt4Quesos);
         textoVegetal=(TextView)findViewById(R.id.txtVegetal);
         textoTropical=(TextView)findViewById(R.id.txtTropical);
-        textoCocaCola=(TextView)findViewById(R.id.txtCocaCola);
-        textoLimon=(TextView)findViewById(R.id.txtLimon);
-        textoNaranja=(TextView)findViewById(R.id.txtNaranja);
-        textoNestea=(TextView)findViewById(R.id.txtNestea);
-        textoCerveza=(TextView)findViewById(R.id.txtCerveza);
-        textoAgua=(TextView)findViewById(R.id.txtAgua);
+
 
         tip=(Spinner)findViewById(R.id.cmbTipo);
         tam=(Spinner)findViewById(R.id.cmbTamaño);
@@ -201,12 +201,14 @@ public class DatosPedido extends AppCompatActivity {
                 vege.setTamaño(tamañoPizza);
                 tropi.setTamaño(tamañoPizza);
 
-                preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0]);
-                preciolimon.setText("" + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]);
-                precionaranja.setText("" + Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
-                precionestea.setText("" + Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
-                preciocerveza.setText("" + Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]);
-                precioagua.setText("" + Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]);
+                cantidadesBebidas();
+
+                preciococacola.setText("" + coca.calculaPrecioTotal());
+                preciolimon.setText("" + limon.calculaPrecioTotal());
+                precionaranja.setText("" + nara.calculaPrecioTotal());
+                precionestea.setText("" + nes.calculaPrecioTotal());
+                preciocerveza.setText("" + cerve.calculaPrecioTotal());
+                precioagua.setText("" + agua.calculaPrecioTotal());
             }
 
             @Override
@@ -419,7 +421,7 @@ public class DatosPedido extends AppCompatActivity {
         botonCocaCola.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayBebidas.add(cantCo.getText().toString()+", "+textoCocaCola.getText().toString()+", "+preciococacola.getText().toString());
+                arrayBebidas.add(coca);
                 acumulaprecios=acumulaprecios+Double.parseDouble(preciococacola.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
@@ -429,7 +431,7 @@ public class DatosPedido extends AppCompatActivity {
         botonLimon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayBebidas.add(cantLi.getText().toString()+", "+textoLimon.getText().toString()+", "+preciolimon.getText().toString());
+                arrayBebidas.add(limon);
                 acumulaprecios=acumulaprecios+Double.parseDouble(preciolimon.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
@@ -439,7 +441,7 @@ public class DatosPedido extends AppCompatActivity {
         botonNaranja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayBebidas.add(cantNa.getText().toString()+", "+textoNaranja.getText().toString()+", "+precionaranja.getText().toString());
+                arrayBebidas.add(nara);
                 acumulaprecios=acumulaprecios+Double.parseDouble(precionaranja.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
@@ -449,7 +451,7 @@ public class DatosPedido extends AppCompatActivity {
         botonNestea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayBebidas.add(cantNes.getText().toString()+", "+textoNestea.getText().toString()+", "+precionestea.getText().toString());
+                arrayBebidas.add(nes);
                 acumulaprecios=acumulaprecios+Double.parseDouble(precionestea.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
@@ -459,7 +461,7 @@ public class DatosPedido extends AppCompatActivity {
         botonCerveza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayBebidas.add(cantCer.getText().toString()+", "+textoCerveza.getText().toString()+", "+preciocerveza.getText().toString());
+                arrayBebidas.add(cerve);
                 acumulaprecios=acumulaprecios+Double.parseDouble(preciocerveza.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
@@ -469,7 +471,7 @@ public class DatosPedido extends AppCompatActivity {
         botonAgua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayBebidas.add(cantAgua.getText().toString() + ", " + textoAgua.getText().toString() + ", " + precioagua.getText().toString());
+                arrayBebidas.add(agua);
                 acumulaprecios = acumulaprecios + Double.parseDouble(precioagua.getText().toString());
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Bebida añadida", Toast.LENGTH_SHORT);
                 toast1.show();
@@ -484,7 +486,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!cantCo.getText().toString().equals("")) {
-                    preciococacola.setText("" + Double.parseDouble(cantCo.getText().toString()) * preciosbebida[0]);
+                    cantidadesBebidas();
+                    preciococacola.setText("" + coca.calculaPrecioTotal());
                 }
             }
 
@@ -503,7 +506,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantLi.getText().toString().equals("")) {
-                    preciolimon.setText("" + Double.parseDouble(cantLi.getText().toString()) * preciosbebida[1]);
+                    cantidadesBebidas();
+                    preciolimon.setText("" + limon.calculaPrecioTotal());
                 }
             }
 
@@ -522,7 +526,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantNa.getText().toString().equals("")) {
-                    precionaranja.setText("" + Double.parseDouble(cantNa.getText().toString()) * preciosbebida[2]);
+                    cantidadesBebidas();
+                    precionaranja.setText("" + nara.calculaPrecioTotal());
                 }
             }
 
@@ -541,7 +546,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantNes.getText().toString().equals("")) {
-                    precionestea.setText("" + Double.parseDouble(cantNes.getText().toString()) * preciosbebida[3]);
+                    cantidadesBebidas();
+                    precionestea.setText("" + nes.calculaPrecioTotal());
                 }
             }
 
@@ -560,7 +566,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantCer.getText().toString().equals("")) {
-                    preciocerveza.setText("" + Double.parseDouble(cantCer.getText().toString()) * preciosbebida[4]);
+                    cantidadesBebidas();
+                    preciocerveza.setText("" + cerve.calculaPrecioTotal());
                 }
             }
 
@@ -579,7 +586,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!cantAgua.getText().toString().equals("")) {
-                    precioagua.setText("" + Double.parseDouble(cantAgua.getText().toString()) * preciosbebida[5]);
+                    cantidadesBebidas();
+                    precioagua.setText("" + agua.calculaPrecioTotal());
                 }
             }
 
@@ -658,6 +666,15 @@ public class DatosPedido extends AppCompatActivity {
 
         String tropiDosdecimales=df.format(tropi.calculaPrecioTotal());
         preciotro.setText("" + tropiDosdecimales);
+    }
+
+    public void cantidadesBebidas(){
+        coca.setCantidad(Integer.parseInt(cantCo.getText().toString()));
+        limon.setCantidad(Integer.parseInt(cantLi.getText().toString()));
+        nara.setCantidad(Integer.parseInt(cantNa.getText().toString()));
+        nes.setCantidad(Integer.parseInt(cantNes.getText().toString()));
+        cerve.setCantidad(Integer.parseInt(cantCer.getText().toString()));
+        agua.setCantidad(Integer.parseInt(cantAgua.getText().toString()));
     }
 
 }

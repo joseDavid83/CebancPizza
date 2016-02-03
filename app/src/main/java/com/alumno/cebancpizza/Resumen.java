@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Resumen extends AppCompatActivity {
     private TextView nombre2,dire2,telef2,pizzas,bebidas,preciototal,peluche,vale;
     ArrayList<Pizza> arrayPizzasResumen = new ArrayList<Pizza>();
-    ArrayList<String> arrayBebidasResumen = new ArrayList<String>();
+    ArrayList<Bebida> arrayBebidasResumen = new ArrayList<Bebida>();
     private String acumulapizzas="",acumulabebidas="";
     private double totalprecio;
     private ImageView imagenpeluche;
@@ -47,8 +47,9 @@ public class Resumen extends AppCompatActivity {
         nombre2.setText("Nombre: "+ cli.getNombre());
         dire2.setText("Dirección: " + cli.getDireccion());
         telef2.setText("Teléfono: "+ cli.getTelefono());
+
         arrayPizzasResumen=(ArrayList<Pizza>)getIntent().getExtras().getSerializable("ap");
-        arrayBebidasResumen=getIntent().getStringArrayListExtra("ab");
+        arrayBebidasResumen=(ArrayList<Bebida>)getIntent().getExtras().getSerializable("ab");
         totalprecio=getIntent().getDoubleExtra("acumprecios",totalprecio);
         String tp=df.format(totalprecio);
 
@@ -60,7 +61,7 @@ public class Resumen extends AppCompatActivity {
         pizzas.setText(acumulapizzas);
         //estructura repetitiva para organizar los datos recibidos de las bebidas
         for(int i=0;i<=arrayBebidasResumen.size()-1;i++){
-            acumulabebidas=acumulabebidas + arrayBebidasResumen.get(i)+"\n";
+            acumulabebidas=acumulabebidas +arrayBebidasResumen.get(i).getCantidad()+", "+arrayBebidasResumen.get(i).getNombre()+", "+arrayBebidasResumen.get(i).getPrecio()+" €"+"\n";
         }
         bebidas.setText(acumulabebidas);
 
