@@ -16,7 +16,7 @@ public class DatosCliente extends AppCompatActivity{
     private Button sig,sal,buscar;
     private EditText nombre,direccion,telefono;
     private String nomb,direc,tel;
-    private boolean comprobar;
+    private boolean comprobar,existecliente=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +71,7 @@ public class DatosCliente extends AppCompatActivity{
     //método para comprobar que los editText tengan algo escrito y recoger los datos del cliente
     public boolean datos(){
         boolean lleno=false;
+
         if(nombre.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")){
             Toast.makeText(this, "Falta introducir los datos", Toast.LENGTH_SHORT).show();
             lleno=false;
@@ -97,6 +98,7 @@ public class DatosCliente extends AppCompatActivity{
     }
 
     public void consultaporcodigo(View v) {
+        existecliente=false;
         DbHelper admin = new DbHelper(this);
         SQLiteDatabase bd = admin.getWritableDatabase();
         nomb = nombre.getText().toString();
@@ -104,6 +106,7 @@ public class DatosCliente extends AppCompatActivity{
         if (fila.moveToFirst()) {
             direccion.setText(fila.getString(0));
             telefono.setText(fila.getString(1));
+            existecliente=true;
         } else {
             Toast.makeText(this, "No existe el cliente. Rellene todos los datos y al darle a siguiente quedara registrado", Toast.LENGTH_SHORT).show();
             direccion.setText("");
@@ -113,20 +116,23 @@ public class DatosCliente extends AppCompatActivity{
     }
 
     public void alta(View v) {
-        DbHelper admin = new DbHelper(this);
-        SQLiteDatabase bd = admin.getWritableDatabase();
-        nomb= nombre.getText().toString();
-        direc = direccion.getText().toString();
-        tel = telefono.getText().toString();
-        ContentValues registro = new ContentValues();
-        registro.put("nombre", nomb);
-        registro.put("direccion", direc);
-        registro.put("telefono", tel);
-        bd.insert("clientes", null, registro);
-        bd.close();
-        nombre.setText("");
-        direccion.setText("");
-        telefono.setText("");
-        Toast.makeText(this, "Se cargaron los datos del cliente", Toast.LENGTH_SHORT).show();
+        if (existecliente==false){
+            DbHelper admin = new DbHelper(this);
+            SQLiteDatabase bd = admin.getWritableDatabase();
+            nomb= nombre.getText().toString();
+            direc = direccion.getText().toString();
+            tel = telefono.getText().toString();
+            ContentValues registro = new ContentValues();
+            registro.put("nombre", nomb);
+            registro.put("direccion", direc);
+            registro.put("telefono", tel);
+            bd.insert("clientes", null, registro);
+            bd.close();
+            nombre.setText("");
+            direccion.setText("");
+            telefono.setText("");
+            Toast.makeText(this, "Se cargaron los datos del cliente", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

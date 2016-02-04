@@ -123,6 +123,14 @@
                 android:id="@+id/btnCancelar"
                 android:layout_gravity="center_horizontal"
                 android:textSize="20dp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Mostrar pedidos"
+                android:id="@+id/btnMostrar"
+                android:textSize="20dp" />
+
         </LinearLayout>
     </ScrollView>
 

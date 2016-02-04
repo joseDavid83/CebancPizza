@@ -161,12 +161,6 @@ public class DatosPedido extends AppCompatActivity {
                 } else if (position == 1) {
                     tipoMasa = "Masa normal";
                 }
-
-                carbo.setTipo(tipoMasa);
-                barba.setTipo(tipoMasa);
-                quesos.setTipo(tipoMasa);
-                vege.setTipo(tipoMasa);
-                tropi.setTipo(tipoMasa);
             }
 
             @Override
@@ -195,11 +189,7 @@ public class DatosPedido extends AppCompatActivity {
                     imprimirPrecio();
                     tamañoPizza = "Familiar";
                 }
-                carbo.setTamaño(tamañoPizza);
-                barba.setTamaño(tamañoPizza);
-                quesos.setTamaño(tamañoPizza);
-                vege.setTamaño(tamañoPizza);
-                tropi.setTamaño(tamañoPizza);
+
 
                 cantidadesBebidas();
 
@@ -223,6 +213,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 carbo.setNombre(textoCarbonara.getText().toString());
+                carbo.setTipo(tipoMasa);
+                carbo.setTamaño(tamañoPizza);
                 arrayPizzas.add(carbo);
                 acumulaprecios=acumulaprecios+carbo.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida ", Toast.LENGTH_SHORT);
@@ -234,6 +226,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 barba.setNombre(textoBarbacoa.getText().toString());
+                barba.setTipo(tipoMasa);
+                barba.setTamaño(tamañoPizza);
                 arrayPizzas.add(barba);
                 acumulaprecios = acumulaprecios + barba.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
@@ -245,6 +239,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 quesos.setNombre(texto4Quesos.getText().toString());
+                quesos.setTipo(tipoMasa);
+                quesos.setTamaño(tamañoPizza);
                 arrayPizzas.add(quesos);
                 acumulaprecios = acumulaprecios + quesos.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
@@ -256,6 +252,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 vege.setNombre(textoVegetal.getText().toString());
+                vege.setTipo(tipoMasa);
+                vege.setTamaño(tamañoPizza);
                 arrayPizzas.add(vege);
                 acumulaprecios = acumulaprecios + vege.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);
@@ -267,6 +265,8 @@ public class DatosPedido extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tropi.setNombre(textoTropical.getText().toString());
+                tropi.setTipo(tipoMasa);
+                tropi.setTamaño(tamañoPizza);
                 arrayPizzas.add(tropi);
                 acumulaprecios = acumulaprecios + tropi.calculaPrecioTotal();
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Pizza añadida", Toast.LENGTH_SHORT);

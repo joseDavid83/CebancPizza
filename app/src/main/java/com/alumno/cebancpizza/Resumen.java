@@ -1,6 +1,9 @@
 package com.alumno.cebancpizza;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,9 +23,13 @@ public class Resumen extends AppCompatActivity {
     private String acumulapizzas="",acumulabebidas="";
     private double totalprecio;
     private ImageView imagenpeluche;
-    private Button botonAceptar,botonCancelar;
+    private Button botonAceptar,botonCancelar,botonMostrar;
     Cliente cli;
     DecimalFormat df = new DecimalFormat("0.00");
+    String nombre,tipo,tamaño;
+    int cantidad;
+    double precio;
+    int idcliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,7 @@ public class Resumen extends AppCompatActivity {
         imagenpeluche=(ImageView)findViewById(R.id.imgPeluche);
         botonAceptar=(Button)findViewById(R.id.btnAceptar);
         botonCancelar=(Button)findViewById(R.id.btnCancelar);
+        botonMostrar=(Button)findViewById(R.id.btnMostrar);
 
         //variables para recoger los datos mandados
         cli =(Cliente)getIntent().getExtras().getSerializable("cliente");
@@ -80,13 +88,13 @@ public class Resumen extends AppCompatActivity {
         botonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast1 = Toast.makeText(getApplicationContext(), "PEDIDO ENVIADO. Saliendo de la aplicación...", Toast.LENGTH_SHORT);
+                Toast toast1 = Toast.makeText(getApplicationContext(), "PEDIDO ENVIADO.", Toast.LENGTH_SHORT);
                 toast1.show();
-                finish();
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                consultaporcodigo(v);
+                altaPizzas(v);
+                altaBebidas(v);
+
+
             }
         });
         //listener del botón cancelar
@@ -102,6 +110,70 @@ public class Resumen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+        botonMostrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lanzarMostrarPedidos();
+            }
+        });
+
+    }
+    public void altaPizzas(View v) {
+        DbHelper admin = new DbHelper(this);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        for(int i=0;i<=arrayPizzasResumen.size()-1;i++){
+
+            nombre= arrayPizzasResumen.get(i).getNombre();
+            tipo = arrayPizzasResumen.get(i).getTipo();
+            tamaño = arrayPizzasResumen.get(i).getTamaño();
+            cantidad=arrayPizzasResumen.get(i).getCantidad();
+            precio=arrayPizzasResumen.get(i).getPrecio();
+            ContentValues registro = new ContentValues();
+
+            registro.put("nombre", nombre);
+            registro.put("tipo", tipo);
+            registro.put("tamano", tamaño);
+            registro.put("cantidad", cantidad);
+            registro.put("precio", precio);
+            registro.put("cliente", idcliente);
+            bd.insert("pizzas", null, registro);
+        }
+        bd.close();
+        Toast.makeText(this, "Se cargaron los datos del cliente ", Toast.LENGTH_SHORT).show();
+    }
+    public void consultaporcodigo(View v) {
+        DbHelper admin = new DbHelper(this);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        Cursor fila = bd.rawQuery("select idcliente from Clientes where nombre='"+ cli.getNombre() +"' and direccion='"+ cli.getDireccion() +"' and telefono='"+cli.getTelefono()+"'", null);
+        if (fila.moveToFirst()) {
+            idcliente=fila.getInt(0);
+
+        }
+        bd.close();
+    }
+    public void altaBebidas(View v) {
+        DbHelper admin = new DbHelper(this);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        for(int i=0;i<=arrayBebidasResumen.size()-1;i++){
+
+            nombre= arrayBebidasResumen.get(i).getNombre();
+            cantidad=arrayPizzasResumen.get(i).getCantidad();
+            precio=arrayPizzasResumen.get(i).getPrecio();
+            ContentValues registro = new ContentValues();
+
+            registro.put("nombre", nombre);
+            registro.put("cantidad", cantidad);
+            registro.put("precio", precio);
+            registro.put("cliente", idcliente);
+            bd.insert("bebidas", null, registro);
+        }
+        bd.close();
+
+    }
+    public void lanzarMostrarPedidos(){
+        Intent i=new Intent(this, MostrarPedidos.class);
+        startActivity(i);
+    }
 }
