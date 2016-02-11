@@ -19,7 +19,7 @@
         <activity android:name=".DatosPedido"></activity>
         <activity android:name=".Resumen"></activity>
         <activity android:name=".MostrarPedidos"
-            android:label="Mostrar pedidos"
+            android:label="Historial de pedidos"
             android:theme="@android:style/Theme.Dialog"/>
 
     </application>

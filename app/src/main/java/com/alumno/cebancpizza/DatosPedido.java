@@ -1,5 +1,7 @@
 package com.alumno.cebancpizza;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -118,11 +120,7 @@ public class DatosPedido extends AppCompatActivity {
         sal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();    //instrucciones para salir de la aplicación
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                alerta();
             }
         });
         //instrucciones para añadir pestañas al layout
@@ -653,7 +651,7 @@ public class DatosPedido extends AppCompatActivity {
 
     public void imprimirPrecio(){
         String carboDosdecimales=df.format(carbo.calculaPrecioTotal());
-        preciocarbo.setText("" + carboDosdecimales );
+        preciocarbo.setText("" + carboDosdecimales);
 
         String barbaDosdecimales=df.format(barba.calculaPrecioTotal());
         preciobar.setText("" + barbaDosdecimales);
@@ -675,6 +673,32 @@ public class DatosPedido extends AppCompatActivity {
         nes.setCantidad(Integer.parseInt(cantNes.getText().toString()));
         cerve.setCantidad(Integer.parseInt(cantCer.getText().toString()));
         agua.setCantidad(Integer.parseInt(cantAgua.getText().toString()));
+    }
+    public void alerta(){
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        dialogo1.setTitle("Importante");
+        dialogo1.setMessage("¿ Esta seguro de salir de la aplicación?");
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                aceptar();
+            }
+        });
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+
+            }
+        });
+        dialogo1.show();
+    }
+    public void aceptar() {
+        Toast toast1 = Toast.makeText(getApplicationContext(), "PEDIDO CANCELADO. Saliendo de la aplicación...", Toast.LENGTH_SHORT);
+        toast1.show();
+        finish();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

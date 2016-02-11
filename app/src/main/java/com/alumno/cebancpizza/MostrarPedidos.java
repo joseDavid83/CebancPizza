@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class MostrarPedidos extends Activity {
     private TextView mostrar;
     private ArrayList<String> clientes=new ArrayList<String>();
     private ArrayList<Integer> idclientes=new ArrayList<Integer>();
+    DecimalFormat df = new DecimalFormat("0.00");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,21 +56,27 @@ public class MostrarPedidos extends Activity {
         String cadenacliente="";
         String cadenatotal="";
         String cadenapedidos="";
+
         DbHelper admin = new DbHelper(this);
         SQLiteDatabase bd = admin.getWritableDatabase();
         for (int i=0;i<=idclientes.size()-1;i++) {
-            Log.e("iepa", "entra");
-            cadenacliente=cadenacliente+clientes.get(i)+"\n";
-            Cursor fila = bd.rawQuery("select p.nombre,p.cantidad,p.precio,tamano,tipo,p.cliente,b.nombre,b.cantidad,b.precio,b.cliente,clientes c from pizzas p,bebidas b where c.idcliente=p.cliente and c.idcliente=b.cliente and idcliente="+idclientes.get(i)+"", null);
+            double preciototal=0;
+            cadenacliente=clientes.get(i)+"\n"+"\n";
+            Cursor fila = bd.rawQuery("select p.cantidad,p.nombre,tamano,tipo,p.precio,b.cantidad,b.nombre,b.precio from pizzas p,bebidas b,clientes c where c.idcliente=p.cliente and c.idcliente=b.cliente and idcliente="+idclientes.get(i)+"", null);
             //Nos aseguramos de que existe al menos un registro
+
             if (fila.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    cadenapedidos = fila.getString(0) + " " + fila.getString(1) + " " + fila.getString(2) + " " + fila.getString(3)+ " " + fila.getString(4)+ " " + fila.getString(5)+ " " + fila.getString(6)+ " " + fila.getString(7)+ " " + fila.getString(8)+ " " + fila.getString(9)+ " " + fila.getString(10)+"\n";
-
+                    cadenapedidos = cadenapedidos+fila.getString(0) + " " + fila.getString(1) + " " + fila.getString(2) + " " + fila.getString(3)+ " " + fila.getString(4)+" €/unidad"+ "\n"+ fila.getString(5)+ " " + fila.getString(6)+ " " + fila.getString(7)+ " €/unidad"+"\n" ;
+                    double precioPizza=fila.getDouble(4),precioBebida=fila.getDouble(7);
+                    int cantidadPizza=fila.getInt(0),cantidadbebida=fila.getInt(5);
+                    preciototal=preciototal+(precioPizza*cantidadPizza)+(precioBebida*cantidadbebida);
                 } while (fila.moveToNext());
             }
-            cadenatotal=cadenatotal+cadenacliente+cadenapedidos+"\n";
+            String tp=df.format(preciototal);
+            cadenatotal=cadenatotal+cadenacliente+cadenapedidos+"El precio total gastado es: "+tp+" €"+"\n"+"\n";
+            cadenapedidos="";
         }
         bd.close();
         mostrar.setText(cadenatotal);

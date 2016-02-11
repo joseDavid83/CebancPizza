@@ -75,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/txtTelefono" />
+                android:id="@+id/txtTelefono"
+                android:maxLength="9" />
 
             <Button
                 android:layout_width="fill_parent"
