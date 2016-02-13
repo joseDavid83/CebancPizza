@@ -18,6 +18,7 @@ public class DatosCliente extends AppCompatActivity{
     private Button sig,sal,buscar;
     private EditText nombre,direccion,telefono;
     private String nomb,direc,tel;
+    private int idcli;
     private boolean comprobar,existecliente=false;
 
     @Override
@@ -100,11 +101,13 @@ public class DatosCliente extends AppCompatActivity{
         DbHelper admin = new DbHelper(this);
         SQLiteDatabase bd = admin.getWritableDatabase();
         nomb = nombre.getText().toString();
-        Cursor fila = bd.rawQuery("select direccion, telefono from Clientes where nombre='"+ nomb +"'", null);
+        Cursor fila = bd.rawQuery("select idcliente,direccion, telefono from Clientes where nombre='"+ nomb +"'", null);
         if (fila.moveToFirst()) {
-            direccion.setText(fila.getString(0));
-            telefono.setText(fila.getString(1));
+            idcli=fila.getInt(0);
+            direccion.setText(fila.getString(1));
+            telefono.setText(fila.getString(2));
             existecliente=true;
+            Toast.makeText(this, "Cliente encontrado. Modifique los datos si lo desea", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "No existe el cliente. Rellene todos los datos y al darle a siguiente quedara registrado", Toast.LENGTH_SHORT).show();
             direccion.setText("");
@@ -130,6 +133,8 @@ public class DatosCliente extends AppCompatActivity{
             direccion.setText("");
             telefono.setText("");
             Toast.makeText(this, "Se cargaron los datos del cliente", Toast.LENGTH_SHORT).show();
+        }else{
+            modificacion(v);
         }
 
     }
@@ -158,6 +163,23 @@ public class DatosCliente extends AppCompatActivity{
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+    public void modificacion(View v) {
+        DbHelper admin = new DbHelper(this);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        nomb= nombre.getText().toString();
+        direc = direccion.getText().toString();
+        tel = telefono.getText().toString();
+        ContentValues registro = new ContentValues();
+        registro.put("nombre", nomb);
+        registro.put("direccion", direc);
+        registro.put("telefono", tel);
+        int cant = bd.update("clientes", registro, "idcliente=" + idcli, null);
+        bd.close();
+        if (cant == 1)
+            Toast.makeText(this, "se modificaron los datos del cliente", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "no se han podido actualizar los datos", Toast.LENGTH_SHORT).show();
     }
 
 }

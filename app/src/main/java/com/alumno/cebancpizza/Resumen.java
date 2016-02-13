@@ -95,8 +95,6 @@ public class Resumen extends AppCompatActivity {
                 consultaporcodigo(v);
                 altaPizzas(v);
                 altaBebidas(v);
-
-
             }
         });
         //listener del botón cancelar
@@ -199,6 +197,7 @@ public class Resumen extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+
     }
 
     @Override
